@@ -1,4 +1,12 @@
 <?php
+
+    session_start();
+
+    if(isset($_SESSION['user'])){
+        header("Location:http://qrent/");
+        die();
+    }
+
     require "../connectToDb.php";
     $user = "";
     $pass = "";
@@ -11,6 +19,7 @@
         $stmt = $conn->prepare("INSERT INTO users(username,password,type) VALUES(?,?,?)");
         $stmt->bind_param("sss",$user,$pass,$type);
         if($stmt->execute()){
+            $_SESSION['user'] = $user;
             header("Location:http://qrent/");
         }else{
             echo $stmt->error;
