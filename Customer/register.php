@@ -47,6 +47,7 @@
 
         
         <?php
+            require "../connectToDb.php";
             function validatePassword($pass1,$pass2){
                 ifSame == strcmp($pass1,$pass2);
                 if ($ifSame != 0){
