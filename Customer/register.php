@@ -76,7 +76,6 @@
                 <option>1977</option>
                 <option>1978</option>
                 <option>1979</option>
-                <option>197</option>
                 <option>1980</option>
                 <option>1981</option>
                 <option>1982</option>
@@ -99,6 +98,23 @@
                 <option>1999</option>
                 <option>2000</option>
                 <option>2001</option>
+                <option>2002</option>
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+                <option>2006</option>
+                <option>2007</option>
+                <option>2008</option>
+                <option>2009</option>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
             </select>
             <br>
             <input type="submit" value="Register">
