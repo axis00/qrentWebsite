@@ -55,73 +55,80 @@
 <html>
     
     <head>
-        <title>Registration</title>
+        <title>Qrent</title>
         <link rel="stylesheet" href="../css/style.css">
     </head>
     
     <body>
+        <div class="navbar">
+            <p>REGISTRATION FORM</p>
+        </div>
         
-        <form action="register.php" method="post">
+        <div class="content-reg">
+            <form action="register.php" method="post">
             
-            <p>First Name: <br>
-            <input type="text" name="firstName" placeholder="First Name">
-            </p>
+                <p>First Name: <br>
+                <input type="text" name="firstName" placeholder="First Name">
+                </p>
             
-            <p>Last Name: <br>
-            <input type="text" name="lastName" placeholder="Last Name"> 
-            </p>
+                <p>Last Name: <br>
+                <input type="text" name="lastName" placeholder="Last Name"> 
+                </p>
             
-            <p>Birthday: <br>
-            <input type="date" name="birthday">
-            </p>
+                <p>Birthday: <br>
+                <input type="date" name="birthday">
+                </p>
             
-            <p>E-mail Address: <br>
-            <input type="email" name="email" placeholder="E-mail Address">
-            </p>
+                <p>E-mail Address: <br>
+                <input type="email" name="email" placeholder="E-mail Address">
+                </p>
             
-            <p>Mobile Number: <br> 
-            <input type="text" name="mobileNumber" placeholder="Mobile Number">
-            </p>
+                <p>Mobile Number: <br> 
+                <input type="text" name="mobileNumber" placeholder="Mobile Number">
+                </p>
             
-            <p>Username: <br>
-            <input type="text" name="username" placeholder="Username">
-            </p>
+                <p>Username: <br>
+                <input type="text" name="username" placeholder="Username">
+                </p>
             
-            <p>Password: <br>
-            <input type="password" name="password" placeholder="Password">
-            </p>
+                <p>Password: <br>
+                <input type="password" name="password" placeholder="Password">
+                </p>
             
-            <p>Re-enter Password: <br>
-            <input type="password" name="verifyPassord" placeholder="Re-enter Password">
-            </p>
+                <p>Re-enter Password: <br>
+                <input type="password" name="verifyPassord" placeholder="Re-enter Password">
+                </p>
             
-            <p>Address Type: <br>
-            <select name="addressType">
-                <option>--Address Type--</option>
-                <option value="home">Home</option>
-                <option value="business">Business</option>
-                <option value="postal">Postal</option>
-            </select>
-            </p>
+                <p>Address Type: <br>
+                <select name="addressType">
+                    <option>------------Address Type------------</option>
+                    <option value="home">Home</option>
+                    <option value="business">Business</option>
+                    <option value="postal">Postal</option>
+                </select>
+                </p>
             
-            <p>Street: <br>
-            <input type="text" name="street" placeholder="Street">
-            </p>
+                <p>Street: <br>
+                    <input type="text" name="street" placeholder="Street">
+                </p>
             
-            <p>Municipality: <br>
-            <input type="text" name="municipality" placeholder="Municipality">
-            </p>
+                <p>Municipality: <br>
+                    <input type="text" name="municipality" placeholder="Municipality">
+                </p>
             
-            <p>Province: <br>
-            <input type="text" name="province" placeholder="Province">
-            </p>
+                <p>Province: <br>
+                    <input type="text" name="province" placeholder="Province">
+                </p>
             
-            <p>Postal Code: <br>
-            <input type="text" name="postalCode" placeholder="Postal Code"> <br>
-            </p>
-            
-            <input type="submit" class="button" value="Register"> <a href="../index.php"><input type="button" class="button" value="return"></a>
-        </form>
+                <p>Postal Code: <br>
+                    <input type="text" name="postalCode" placeholder="Postal Code"> <br>
+                </p>
+                
+                <div id="button-reg">
+                <input type="submit" class="button-reg" value="Register"> <a href="../index.php"><input type="button" class="button-reg" value="return"></a>
+                </div>
+            </form>
+        </div>
 
     </body>
 </html>

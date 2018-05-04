@@ -1,4 +1,66 @@
-.button{
-    border-radius: 10vh;
+.navbar {
+    display: inline-block;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border: 2px solid rgba(215, 59, 80, 1);
+    background-color: rgba(215, 59, 80, 1);
+    padding: 1vh;
 }
+
+.navbar p {
+    color: white;
+    text-align: center;
+}
+
+.button {
+    border-radius: 10vh;
+    border: 2px solid white;
+    background-color: white;
+    color: red;
+}
+
+.button-reg {
+    border-radius: 10vh;
+    border: 2px solid rgba(215, 59, 80, 1);
+    background-color: rgba(215, 59, 80, 1);
+    color: white;
+}
+
+.content-reg {
+    padding-top: 11vh;
+    padding-bottom: 3vh; 
+    text-align: center;
+    color: rgba(215, 59, 80, 1);
+    font-size: 20px;
+}
+
+.content-reg input {
+    width: 40vh;
+}
+
+.content-reg select {
+    width: 40vh;
+}
+
+#logOrSign {
+    padding-right: 5vh;
+    float: right;
+}
+
+#button-reg input {
+    width: 20vh;
+}
+
+#button-reg input:hover {
+    width: 21vh;
+    height: 5vh;
+    cursor: pointer;
+}
+
+body {
+    background-color: rgba(255, 232, 230, 0.7);
+}
+
 
