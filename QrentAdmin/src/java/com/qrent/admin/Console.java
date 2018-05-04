@@ -25,25 +25,26 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Console extends HttpServlet {
     
-    private final String DBIP = "qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/";
-    private final String DBURL = "jdbc:mysql://" + DBIP + ":3306/qrent";
-    private final String USER = "root";
-    private final String PASSWORD = "letmein12#";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+    static final String DB_URL="jdbc:mysql://localhost/qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent";
+    
+    static final String USER = "root";
+    static final String PASS = "letmein12#";
     
     private Connection con;
     private PreparedStatement ps;
     
+    //response.setContentType("text/html");
+    //PrintWriter out = response.getWriter();
+    
     public void connectToDb() throws SQLException{
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection(DBURL,USER,PASSWORD);
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(DB_URL, USER, PASS);
             
-        } catch (Exception e){
+        } catch (ClassNotFoundException | SQLException e){
             Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, e);
-
         } 
-        
-
     }
     
 
