@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -105,13 +106,18 @@ public class Console extends HttpServlet {
 
             String username = request.getParameter("username");
             String password = request.getParameter("password");
+            
             ps = con.prepareStatement("SELECT username, password FROM users WHERE ((type='Admin') AND (username = ? AND password = ?))");
             ps.setString(1, username);
             ps.setString(2, password);
-
+            
             ResultSet res = ps.executeQuery();
             if (res.next()) {
+                HttpSession session = request.getSession();
                 out.println("Success");
+                session.setAttribute("user", username);
+                session.setMaxInactiveInterval(10);
+                out.println(session.getId());
             } else {
                 out.println("Failed");
             }
