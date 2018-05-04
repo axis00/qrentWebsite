@@ -8,8 +8,7 @@
         }
         */
         
-        require "../connectToDb.php";
-        $type = "Customer";
+        require "../../connectTodb.php";
         $first = "";
         $last = "";
         $birthday = "";
@@ -37,10 +36,19 @@
             $municipality = $_POST['municipality'];
             $province = $_POST['province'];
             $postalCode = $_POST['postalCode'];
+            $type = "Customer";
+            $status = "pending";
+
+             
+            $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status ) VALUES(?,?,?,?,?,?,?)");
+            $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
+
+        if(!$stmt->execute()){
+                     echo $stmt->error;   
+        }
+            
         }
 
-        $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email) VALUES(?,?,?,?,?,?)");
-        $stmt->bind_param("ssssss", $username, $password, $type, $first, $last, $email);
     ?>
 
 <!DOCTYPE HTML>
@@ -48,14 +56,14 @@
     
     <head>
         <title>Registration</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     
     <body>
-        <a href="index.php" class="button"><input type="button" value="return"></a>
-        <form action="profile.php" method="post">
+        
+        <form action="register.php" method="post">
             
-            <p id="sample">First Name: <br>
+            <p>First Name: <br>
             <input type="text" name="firstName" placeholder="First Name">
             </p>
             
@@ -112,7 +120,7 @@
             <input type="text" name="postalCode" placeholder="Postal Code"> <br>
             </p>
             
-            <input type="submit" class="button" value="Register">
+            <input type="submit" class="button" value="Register"> <a href="../index.php"><input type="button" class="button" value="return"></a>
         </form>
 
     </body>
