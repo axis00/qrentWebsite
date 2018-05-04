@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class Console extends HttpServlet {
     
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    static final String DB_URL="jdbc:mysql://localhost/qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent";
+    static final String DB_URL="jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent";
     
     static final String USER = "root";
     static final String PASS = "letmein12#";
@@ -35,16 +35,14 @@ public class Console extends HttpServlet {
     private PreparedStatement ps;
     
     //response.setContentType("text/html");
-    //PrintWriter out = response.getWriter();
     
     public void connectToDb() throws SQLException{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(DB_URL, USER, PASS);
-            
         } catch (ClassNotFoundException | SQLException e){
-            Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, e);
-        } 
+            e.printStackTrace();
+        }   
     }
     
 
@@ -87,7 +85,6 @@ public class Console extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
     }
 
     /**
@@ -105,22 +102,22 @@ public class Console extends HttpServlet {
             connectToDb();
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
-            
+
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-
-            ps = con.prepareStatement("SELECT username, password FROM users WHERE ((type='Admin') AND (username=? AND password=?))");
+            ps = con.prepareStatement("SELECT username, password FROM users WHERE ((type='Admin') AND (username = ? AND password = ?))");
             ps.setString(1, username);
             ps.setString(2, password);
 
             ResultSet res = ps.executeQuery();
-            if (res.next()){
-                out.println("Sucess");
+            if (res.next()) {
+                out.println("Success");
             } else {
                 out.println("Failed");
             }
+
         } catch (SQLException ex) {
-            Logger.getLogger(Console.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         
     }
