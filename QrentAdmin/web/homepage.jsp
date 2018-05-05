@@ -8,7 +8,6 @@
     <body>
         <p>Your session id = <% out.println(session.getId());%></p>
         <h1>Admin Homepage</h1>
-        
         <a href="logout.jsp">Logout</a>
     </body>
 </html>
