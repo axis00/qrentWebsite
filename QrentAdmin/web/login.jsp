@@ -25,13 +25,16 @@
                 PreparedStatement ps = con.prepareStatement("SELECT username, password FROM users WHERE ((type='Admin') AND (username = ? AND password = ?))");
                 ps.setString(1, username);
                 ps.setString(2, password);
-
+                
+                
+                
                 ResultSet res = ps.executeQuery();
-                if (res.next()) {
+                if (res.next()) {   
                     session.setAttribute("user", username);
                     session.setMaxInactiveInterval(3600);
+                    response.sendRedirect("homepage.jsp");
                 } else {
-                    out.println("Failed");
+                    out.println("Bad login");
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
