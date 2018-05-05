@@ -12,8 +12,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -116,10 +114,10 @@ public class Console extends HttpServlet {
                 HttpSession session = request.getSession();
                 out.println("Success");
                 session.setAttribute("user", username);
-                session.setMaxInactiveInterval(10);
+                session.setMaxInactiveInterval(3600);
                 out.println(session.getId());
             } else {
-                out.println("Failed");
+                response.sendRedirect("index.html");
             }
 
         } catch (SQLException ex) {
