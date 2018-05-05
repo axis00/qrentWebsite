@@ -16,13 +16,12 @@
         $mobile = "";
         $username = "";
         $password = "";
-        $addressType = "";
         $street = "";
         $municipality = "";
         $province = "";
         $postalCode = "";
 
-        if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['addressType']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
+        if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];
             $last = $_POST['lastName'];
             $birthday = $_POST['birthday'];
@@ -31,12 +30,11 @@
             $username = $_POST['username'];
             $password = $_POST['password'];
             $password = sha1($password);
-            $addressType = $_POST['addressType'];
             $street = $_POST['street'];
             $municipality = $_POST['municipality'];
             $province = $_POST['province'];
             $postalCode = $_POST['postalCode'];
-            $type = "Customer";
+            $type = "Client";
             $status = "pending";
 
              
@@ -66,62 +64,33 @@
         
         <div class="content-reg">
             <form action="register.php" method="post">
+                          
+                <input type="text" name="firstName" placeholder="First Name"><br>
             
-                <p>First Name: <br>
-                <input type="text" name="firstName" placeholder="First Name">
-                </p>
+                <input type="text" name="lastName" placeholder="Last Name"><br>
+                
+                <input type="email" name="email" placeholder="E-mail Address"><br>
             
-                <p>Last Name: <br>
-                <input type="text" name="lastName" placeholder="Last Name"> 
-                </p>
+                <input type="text" name="mobileNumber" placeholder="Mobile Number"><br>
+            
+                <input type="text" name="username" placeholder="Username"><br>
+            
+                <input type="password" name="password" placeholder="Password"><br>
+            
+                <input type="password" name="verifyPassord" placeholder="Re-enter Password"><br>
             
                 <p>Birthday: <br>
-                <input type="date" name="birthday">
+                <input type="date" name="birthday"><br>
                 </p>
+                
+                <p>Address <br>
+                    <input type="text" name="street" placeholder="Street"><br>
+                
+                <input type="text" name="municipality" placeholder="Municipality"> <br>
             
-                <p>E-mail Address: <br>
-                <input type="email" name="email" placeholder="E-mail Address">
-                </p>
-            
-                <p>Mobile Number: <br> 
-                <input type="text" name="mobileNumber" placeholder="Mobile Number">
-                </p>
-            
-                <p>Username: <br>
-                <input type="text" name="username" placeholder="Username">
-                </p>
-            
-                <p>Password: <br>
-                <input type="password" name="password" placeholder="Password">
-                </p>
-            
-                <p>Re-enter Password: <br>
-                <input type="password" name="verifyPassord" placeholder="Re-enter Password">
-                </p>
-            
-                <p>Address Type: <br>
-                <select name="addressType">
-                    <option>------------Address Type------------</option>
-                    <option value="home">Home</option>
-                    <option value="business">Business</option>
-                    <option value="postal">Postal</option>
-                </select>
-                </p>
-            
-                <p>Street: <br>
-                    <input type="text" name="street" placeholder="Street">
-                </p>
-            
-                <p>Municipality: <br>
-                    <input type="text" name="municipality" placeholder="Municipality">
-                </p>
-            
-                <p>Province: <br>
-                    <input type="text" name="province" placeholder="Province">
-                </p>
-            
-                <p>Postal Code: <br>
-                    <input type="text" name="postalCode" placeholder="Postal Code"> <br>
+                <input type="text" name="province" placeholder="Province"> <br>
+                            
+                <input type="text" name="postalCode" placeholder="Postal Code"> <br>
                 </p>
                 
                 <div id="button-reg">

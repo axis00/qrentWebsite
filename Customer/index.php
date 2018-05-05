@@ -9,10 +9,12 @@
         
         <div class="navbar">
             <div id="logOrSign">
+                <form action="pages/login.php">
                 <input type="text" placeholder="Username">
                 <input type="password" placeholder="Password">
-                <a href="pages/login.php"><input type="button" class="button" value="Login"></a>    
+                <input type="submit" class="button" value="Login">    
                 <a href="pages/register.php"><input type="button" class="button" value="Register"></a>
+                </form>
             </div>
         </div>
         

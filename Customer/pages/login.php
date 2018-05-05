@@ -1,6 +1,5 @@
 <?php
-    require('connectToDb.php');
-    mysql_select_db($db);
+    require "../../connectToDb.php";
 
     if(isset($_POST['username'])){
         $username = $_POST['username'];
