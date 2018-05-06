@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDateTime"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,8 +11,10 @@
         <%
             if(session.isNew())
                 response.sendRedirect("index.html");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         %>
         
+        <p>Current time = <%out.println(LocalDateTime.now().format(formatter));%></p>
         <p>Your session id = <% out.println(session.getId());%></p>
         <h1>Super home page</h1>
         <a href="register.html">Register new admins</a>

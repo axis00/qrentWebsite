@@ -3,6 +3,8 @@
     Created on : May 5, 2018, 12:29:23 PM
     Author     : Rammaria Advincula
 --%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
@@ -19,6 +21,8 @@
         <%
             Connection con;
             try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
          
@@ -38,10 +42,11 @@
                 ps.setString(5, lastname);
                 ps.setString(6, email);
                 ps.setString(7, "approved");
-                ps.setString(8, "0000-00-00");
+                ps.setString(8, LocalDateTime.now().format(formatter));
                 
                 ps.execute();
                             
+                response.sendRedirect("superhomepage.jsp");
             } catch (SQLException ex) {
                 out.println(ex);
             }
