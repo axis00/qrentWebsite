@@ -28,13 +28,12 @@
 
                 ResultSet res = ps.executeQuery();
                 if (res.next()) {
-                    String status = res.getString("status");
-                    if (status.equals("approved")) {
-                        session.setAttribute("user", username);
-                        session.setMaxInactiveInterval(3600);
-                        response.sendRedirect("homepage.jsp");
+                    session.setAttribute("user", username);
+                    session.setMaxInactiveInterval(3600);
+                    if(res.getString("username").equals("super")) {
+                        response.sendRedirect("superhomepage.jsp");
                     } else {
-                        out.println("<p>User's registration is still pending</p>");
+                        response.sendRedirect("homepage.jsp");
                     }
                 } else {
                     out.println("<p>User doesn't exist.</p>");

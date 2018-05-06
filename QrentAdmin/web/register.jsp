@@ -37,13 +37,11 @@
                 ps.setString(4, firstname);
                 ps.setString(5, lastname);
                 ps.setString(6, email);
-                ps.setString(7, "pending");
+                ps.setString(7, "approved");
                 ps.setString(8, "0000-00-00");
                 
                 ps.execute();
-                
-                out.println("Your registration is now pending.");
-                
+                            
             } catch (SQLException ex) {
                 out.println(ex);
             }
