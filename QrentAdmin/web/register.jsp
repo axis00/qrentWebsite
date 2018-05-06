@@ -26,16 +26,26 @@
 
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
-
-                PreparedStatement ps = con.prepareStatement("INSERT into users(username, password) VALUES (?,?)");
+                String firstname = request.getParameter("firstname");
+                String lastname = request.getParameter("lastname");
+                String email = request.getParameter("email");
+                
+                PreparedStatement ps = con.prepareStatement("INSERT INTO `users` (`username`, `password`, `type`, `firstname`, `lastname`, `email`, `status`, `registrationdate`) VALUES (?,?,?,?,?,?,?,?)");
                 ps.setString(1, username);
                 ps.setString(2, password);
+                ps.setString(3, "Admin");
+                ps.setString(4, firstname);
+                ps.setString(5, lastname);
+                ps.setString(6, email);
+                ps.setString(7, "pending");
+                ps.setString(8, "0000-00-00");
                 
-                out.println(username);
-                out.println(password);
+                ps.execute();
+                
+                out.println("Your registration is now pending.");
                 
             } catch (SQLException ex) {
-                ex.printStackTrace();
+                out.println(ex);
             }
         %>
     </body>
