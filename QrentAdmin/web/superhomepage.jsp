@@ -17,7 +17,7 @@
         <p>Current time = <%out.println(LocalDateTime.now().format(formatter));%></p>
         <p>Your session id = <% out.println(session.getId());%></p>
         <h1>Super home page</h1>
-        <a href="register.html">Register new admins</a>
+        <a href="register-page.jsp">Register new admins</a>
         <br><a href="logout.jsp">Logout</a>
     </body>
 </html>

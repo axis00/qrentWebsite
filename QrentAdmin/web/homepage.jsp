@@ -19,6 +19,7 @@
         <p>Your session id = <% out.println(session.getId());%></p>
         <p>Welcome <b><% out.println(session.getAttribute("user"));%></b>!</p>
         <h1>Admin Homepage</h1>
+        <a href="manage-users.jsp">Manage users</a>
         <a href="logout.jsp">Logout</a>
     </body>
 </html>

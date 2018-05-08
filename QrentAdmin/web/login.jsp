@@ -22,18 +22,21 @@
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
 
-                PreparedStatement ps = con.prepareStatement("SELECT username, password , status FROM users WHERE ((type='Admin') AND (username = ? AND password = ?))");
+                PreparedStatement ps = con.prepareStatement("SELECT username, password, status FROM users WHERE ((type='Admin') AND (username = ?))");
                 ps.setString(1, username);
-                ps.setString(2, password);
 
                 ResultSet res = ps.executeQuery();
                 if (res.next()) {
-                    session.setAttribute("user", username);
-                    session.setMaxInactiveInterval(3600);
-                    if(res.getString("username").equals("super")) {
-                        response.sendRedirect("superhomepage.jsp");
+                    if (res.getString("password").equals(password)) {
+                        session.setAttribute("user", username);
+                        session.setMaxInactiveInterval(3600);
+                        if (res.getString("username").equals("super")) {
+                            response.sendRedirect("superhomepage.jsp");
+                        } else {
+                            response.sendRedirect("homepage.jsp");
+                        }
                     } else {
-                        response.sendRedirect("homepage.jsp");
+                        out.println("<p>Incorrect password.</p>");
                     }
                 } else {
                     out.println("<p>User doesn't exist.</p>");

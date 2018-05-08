@@ -6,8 +6,14 @@
         <title>Register New Admin User</title>
     </head>
     <body>
+        <%
+            if (session.isNew()) {
+                response.sendRedirect("index.html");
+            }
+        %>
+        <p>Session id = <% out.println(session.getId());%></p>
+        <h1>Register</h1>
         <form method="post" action="register.jsp">
-            <h1>Registers</h1>
             <p>Username:</p>
             <input type="text" name="username" id="username"/>
             <p>Password:</p>
@@ -19,7 +25,7 @@
             <p>Email</p>
             <input type="text" name="email" id="email"/>
             <br><br><input type="submit" value="Register" id="registerButton"/>
-            <a href="superhomepage.jsp">Home</a>
         </form>
+        <a href="superhomepage.jsp">Home</a>
     </body>
 </html>

@@ -19,6 +19,10 @@
     </head>
     <body>
         <%
+            if(session.isNew())
+                response.sendRedirect("index.html");
+            
+            
             Connection con;
             try {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
