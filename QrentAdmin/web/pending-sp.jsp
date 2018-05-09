@@ -12,7 +12,7 @@
         <style>
         </style>
     </head>
-    <body>
+    <body style="background-color:#f7ebec">
         <p>Session id = <%out.println(session.getId());%></p>
         <h1>Approve Pending Clients</h1>
         <table>
