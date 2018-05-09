@@ -5,6 +5,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
+        <style>
+            #navbar-container {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+        
         <title>Home page</title>
     </head>
     <body style="background-color:#f7ebec">
@@ -18,14 +27,24 @@
         
             <p>Current time = <%out.println(LocalDateTime.now().format(formatter));%></p>
             <p>Your session id = <% out.println(session.getId());%></p>
-            <p>Welcome <b><% out.println(session.getAttribute("user"));%></b>!</p>
-            <div class='page-header'>
+            
+            <div class="page-header" style="padding: 0; margin: 0;">
                 <h1>Admin Homepage</h1>
             </div>
-            <a href="pendingclients.jsp">Pending Clients</a>
-            <a href="pending-sp.jsp">Pending Service Providers</a>
-            <a href="manage-users.jsp">Manage users</a>
-            <a href="logout.jsp">Logout</a>
+            <div class="container" id="navbar-container">
+                <nav class="navbar navbar-default" style="background-color: ">
+                    <ul class="nav navbar-nav">
+                        <li><a href="pendingclients.jsp">Pending Clients</a></li>
+                        <li><a href="pending-sp.jsp">Pending Service Providers</a></li>
+                        <li><a href="manage-users.jsp">Manage users</a></li>
+                        <li><a href="logout.jsp">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p><big>Welcome <b><% out.println(session.getAttribute("user"));%></b>!</big></p>
         </div>
+            
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>
 </html>
