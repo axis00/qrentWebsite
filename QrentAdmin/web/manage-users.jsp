@@ -32,7 +32,7 @@
 
                     response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Admin'");
+                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin'");
 
                     ResultSet res = ps.executeQuery();
 

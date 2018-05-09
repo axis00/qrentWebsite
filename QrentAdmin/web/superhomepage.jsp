@@ -18,6 +18,7 @@
         <p>Your session id = <% out.println(session.getId());%></p>
         <h1>Super home page</h1>
         <a href="register-page.jsp">Register new admins</a>
+        <a href="manage-users.jsp">Remove admin</a>
         <br><a href="logout.jsp">Logout</a>
     </body>
 </html>

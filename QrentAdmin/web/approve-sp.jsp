@@ -31,5 +31,6 @@
                 out.println(ex);
             }
         %>
+        <a href = "homepage.jsp">Home</a>
     </body>
 </html>
