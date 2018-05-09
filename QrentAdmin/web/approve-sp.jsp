@@ -20,12 +20,12 @@
                 response.setContentType("text/html");
                 
                 String username = request.getParameter("username");
-                PreparedStatement ps = con.prepareStatement("DELETE FROM users WHERE username=?");
+                PreparedStatement ps = con.prepareStatement("UPDATE users SET status='approved' WHERE username=?");
                 ps.setString(1, username);
                 
                 ps.executeUpdate();
-                
-                response.sendRedirect("manage-users.jsp");
+       
+                response.sendRedirect("pending-sp.jsp");
                 
             } catch (SQLException ex) {
                 out.println(ex);

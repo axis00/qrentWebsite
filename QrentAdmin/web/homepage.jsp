@@ -19,6 +19,8 @@
         <p>Your session id = <% out.println(session.getId());%></p>
         <p>Welcome <b><% out.println(session.getAttribute("user"));%></b>!</p>
         <h1>Admin Homepage</h1>
+        <a href="pendingclients.jsp">Pending Clients</a>
+        <a href="pending-sp.jsp">Pending Service Providers</a>
         <a href="manage-users.jsp">Manage users</a>
         <a href="logout.jsp">Logout</a>
     </body>
