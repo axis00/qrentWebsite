@@ -39,16 +39,17 @@
                     while (res.next()) {
 
                         out.println("<tr>");
-                        out.println("<td>" + res.getString("username") + "<td>");
-                        out.println("<td>" + res.getString("firstname") + "<td>");
-                        out.println("<td>" + res.getString("lastname") + "<td>");
-                        out.println("<td>" + res.getString("email") + "<td>");
-                        out.println("<td>" + res.getString("type") + "<td>");
-                        out.println("<td>" + res.getString("status") + "<td>");
+                        out.println("<td>" + res.getString("username") + "</td>");
+                        out.println("<td>" + res.getString("firstname") + "</td>");
+                        out.println("<td>" + res.getString("lastname") + "</td>");
+                        out.println("<td>" + res.getString("email") + "</td>");
+                        out.println("<td>" + res.getString("type") + "</td>");
+                        out.println("<td>" + res.getString("status") + "</td>");
                         out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
                                 + res.getString("username") + "><input type = 'submit' value = 'Remove user'></form></td>");
                         out.println("</tr>");
                     }
+                    
                 } catch (SQLException ex) {
                     out.println(ex);
                 }
