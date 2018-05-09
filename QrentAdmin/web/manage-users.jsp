@@ -8,21 +8,31 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        
         <title>Manage Users</title>
-        <style>
-        </style>
     </head>
-    <body>
-        <p>Session id = <%out.println(session.getId());%></p>
-        <h1>Manage Users</h1>
-        <table>
+    <body style="background-color:#f7ebec">
+        <div class="container">
+            <p>Session id = <%out.println(session.getId());%></p>
+            <div class='page-header'>
+                <h1>Manage Users</h1>
+            </div>
+            <table class="table table-hover">
             <tr>
                 <th>Username</th>
+                <th></th>
                 <th>First Name</th>
+                <th></th>
                 <th>Last Name</th>
+                <th></th>
                 <th>Email</th>
+                <th></th>
                 <th>Type</th>
-                <th>Action</th>
+                <th></th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
             </tr>
             <%
                 Connection con;
@@ -32,7 +42,7 @@
 
                     response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Admin'");
+                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin'");
 
                     ResultSet res = ps.executeQuery();
 
@@ -46,7 +56,7 @@
                         out.println("<td>" + res.getString("type") + "</td>");
                         out.println("<td>" + res.getString("status") + "</td>");
                         out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Remove user'></form></td>");
+                                + res.getString("username") + "><input type = 'submit' value = 'Remove user' class='btn btn-warning'></form></td>");
                         out.println("</tr>");
                     }
                     
@@ -56,5 +66,9 @@
             %>
         </table>
         <a href = "homepage.jsp">Home</a>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        </div>
     </body>
 </html>
