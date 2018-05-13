@@ -34,6 +34,7 @@
                 <th>Status</th>
                 <th></th>
                 <th></th>
+                <th></th>
             </tr>
             <%
                 Connection con;
@@ -56,7 +57,9 @@
                         out.println("<td>" + res.getString("type") + "<td>");
                         out.println("<td>" + res.getString("status") + "<td>");
                         out.println("<td><form action = 'approve-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Approve user' class='btn btn-warning'></form></td>");
+                                + res.getString("username") + "><input type = 'submit' value = 'Approve' class='btn btn-success'></form></td>");
+                        out.println("<td><form action = 'reject-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                + res.getString("username") + "><input type = 'submit' value = 'Reject' class='btn btn-danger'></form></td>");
                         out.println("</tr>");
                     }
                 } catch (SQLException ex) {
