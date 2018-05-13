@@ -14,14 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Transaction History</title>
-         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        
-        <style>
-            #navbar-container {
-                margin: 0;
-                padding: 0;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     </head>
     <body style="background-color:#f7ebec">
         <h1>Transaction History</h1>
@@ -32,6 +25,7 @@
                 <th>Transaction No.</th>
                 <th>Username</th>
                 <th>Rented Item</th>
+                <th>Item No.</th>
                 <th>Duration</th>
                 <th>Price</th>
                 <th>Mode of payment</th>
@@ -46,7 +40,7 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid  FROM transaction NATURAL JOIN Reservation NATURAL JOIN customers ORDER BY paymentdate ASC");
+                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName, itemno, itemRentPrice, paymentType  FROM transaction NATURAL JOIN Reservation NATURAL JOIN customers NATURAL JOIN Item ORDER BY paymentdate ASC");
 
                         ResultSet res = ps.executeQuery();
                         
@@ -58,10 +52,12 @@
                                 out.println("<tr>");
                                 out.println("<td>" + res.getString("paymentdate") + "</td>");
                                 out.println("<td>" + res.getString("paymentid") + "</td>");
+                                out.println("<td>" + res.getString("username") + "</td>");
+                                out.println("<td>" + res.getString("itemName") + "</td>");
+                                out.println("<td>" + res.getString("itemno") + "</td>");
                                 out.println("<td>" + res.getString("") + "</td>");
-                                out.println("<td>" + res.getString("") + "</td>");
-                                out.println("<td>" + res.getString("") + "</td>");
-                                out.println("<td>" + res.getString("") + "</td>");
+                                out.println("<td>" + res.getString("itemRentPrice") + "</td>");
+                                out.println("<td>" + res.getString("paymentType") + "</td>");
                                 out.println("<td>" + res.getString("") + "</td>");
                                 out.println("</tr>");
                             }
