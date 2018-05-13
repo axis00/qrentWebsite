@@ -37,6 +37,7 @@
                         <li><a href="pendingclients.jsp">Pending Clients</a></li>
                         <li><a href="pending-sp.jsp">Pending Service Providers</a></li>
                         <li><a href="manage-users.jsp">Manage users</a></li>
+                        <li><a href="user-transaction.jsp">Transaction History</a></li>
                         <li><a href="logout.jsp">Logout</a></li>
                     </ul>
                 </nav>
