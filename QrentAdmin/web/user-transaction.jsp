@@ -15,8 +15,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Transaction History</title>
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body style="background-color:#f7ebec">
+    <body>
         <h1>Transaction History</h1>
         
         <table class="table table-hover">
@@ -26,7 +27,7 @@
                 <th>Username</th>
                 <th>Rented Item</th>
                 <th>Item No.</th>
-                <th>Duration</th>
+                <th>Rent Duration (Days)</th>
                 <th>Price</th>
                 <th>Mode of payment</th>
                 <th></th>
@@ -40,7 +41,7 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName, itemno, itemRentPrice, paymentType  FROM transaction NATURAL JOIN Reservation NATURAL JOIN customers NATURAL JOIN Item ORDER BY paymentdate ASC");
+                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName, itemno, itemRentPrice, paymentType, duration FROM (((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.reservationID) INNER JOIN customers ON customers.username = transaction.clientusername) INNER JOIN Item ON Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
 
                         ResultSet res = ps.executeQuery();
                         
@@ -55,10 +56,9 @@
                                 out.println("<td>" + res.getString("username") + "</td>");
                                 out.println("<td>" + res.getString("itemName") + "</td>");
                                 out.println("<td>" + res.getString("itemno") + "</td>");
-                                out.println("<td>" + res.getString("") + "</td>");
+                                out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("<td>" + res.getString("itemRentPrice") + "</td>");
                                 out.println("<td>" + res.getString("paymentType") + "</td>");
-                                out.println("<td>" + res.getString("") + "</td>");
                                 out.println("</tr>");
                             }
                         }

@@ -9,16 +9,33 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        
+        <link rel="stylesheet" type="text/css" href="style.css">
         <title>Pending Clients</title>
         
     </head>
-    <body style="background-color:#f7ebec">
-        <p>Session id = <%out.println(session.getId());%></p>
+    <body>
         <div class="container">
         <div class="page-header">
             <h1>Approve Service Providers</h1>
         </div>
+            
+        <div class="container" id="navbar-container">
+            <nav class="navbar navbar-default">
+                <ul class="nav navbar-nav">
+                    <li><a href="pendingclients.jsp">Pending Clients</a></li>
+                    <li><a href="pending-sp.jsp">Pending Service Providers</a></li>
+                    <li><a href="manage-users.jsp">Manage users</a></li>
+                    <li><a href="user-transaction.jsp">Transaction History</a></li>
+                    <li><a href="logout.jsp">Logout</a></li>
+                </ul>
+            </nav>    
+        </div>
+        
+        <ul class="nav nav-tabs">
+                <li role="presentation"><a href="approve-accounts.jsp">All Users</a></li>
+                <li role="presentation"><a href="pendingclients.jsp">Clients</a></li>
+                <li role="presentation" class="active"><a href="pending-sp.jsp">Service Providers</a></li>
+        </ul>
         <table class="table table-hover">
             <tr>
                 <th>Username</th>
