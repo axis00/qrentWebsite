@@ -13,39 +13,7 @@ and open the template in the editor.
         
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     </head>
-    <body style="background-color:#f7ebec">
-        <script>
-//            $(document).ready(function(){
-//                $('#loginButton').click(function(){
-//                    var username=$('#username').val();
-//                    var password=$('#password').val();
-//                    
-//                    if (username = ""){
-//                        alert("Please enter a username");
-//                        return;
-//                    }
-//                    if (password = ""){
-//                        alert("Please enter a password");
-//                        return;
-//                    }
-//                    
-//                    $.ajax({
-//                        type: "POST",
-//                        url: "",
-//                        data:{"username":username, "password":password},
-//                        success: function (data) {
-//                            
-//                            console.log(data);
-////                            if(data=='True'){
-////                            $(location).attr('href', 'homepage.html');
-////                            } else {
-////                            alert('Wrong credentials');
-////                            }
-//                        }
-//                    });
-//                });
-//            });
-        </script>
+    <body style="background-color:#f7ebec;">
         <div class="container" id="admin-login">
             <div class="page-header">
                 <h1>Admin Login</h1>    
@@ -59,6 +27,7 @@ and open the template in the editor.
                 <br><br><input class="btn btn-primary" type="submit" value="Login" id="loginButton"/>
             </form>
         </div>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </body>

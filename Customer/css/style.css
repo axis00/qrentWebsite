@@ -1,63 +1,100 @@
-.navbar {
-    display: inline-block;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    border: 2px solid #0B5351;
+body {
+	margin: 0;
     background-color: #0B5351;
-    padding: 2vh;
+    overflow: hidden;
+    
 }
 
-.navbar p{
-    padding: 0px;
-    color: white;
-    text-align: center;
+.navigation-bar{
+    display: inline-block;
+    border: solid 2px #37888E;
+    padding: 3vh;
+    width: 100%;
+    background-color: #37888E;
 }
+
+.search-bar {
+    margin-left: 25%;
+    margin-top: 20%;
+}
+
+.search-field {
+    width: 60%;
+    font-size: 30px;
+}
+
+.search_button {
+    width: 15%;
+    font-size: 30px;
+}
+
 
 .button {
-    border-radius: 10vh;
-    border: 2px solid white;
     background-color: white;
-    color: #0B5351;
+    border-radius: 3vh;
+    padding-left: 2vh;
+    width: 20vh;
+    padding-right: 1vh;
+    border: solid 2px white;
+    transition: transform .2s;
 }
 
-.button-reg {
-    border-radius: 10vh;
-    border: 2px solid rgba(215, 59, 80, 1);
-    background-color: rgba(215, 59, 80, 1);
-    color: white;
+.button:hover {
+    transform: scale(1.2);    
 }
 
-.content-reg {
-    padding-top: 15vh;
-    padding-bottom: 3vh; 
+.button:focus {
+    outline: 0;
+}
+
+.button-register {
+    background-color: white;
+    border-radius: 3vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    border: solid 2px white;
+    transition: transform .2s;
+}
+
+.button-register:hover {
+    transform: scale(1.2);    
+}
+
+.button-register:focus {
+    outline: 0;
+}
+
+.content-register {
+    margin-top: 4vh;
     text-align: center;
-    color: rgba(215, 59, 80, 1);
+    color: white;
+    
+}
+
+.content-register input {
+    margin-top: 1.5vh;
+    
+}
+
+.register-field input {
+    font-size: 24px;
+}
+
+#login-and-register {
+    float: right;
+    margin-right: 6vh;
+}
+
+#login-and-register input {
+    padding-left: 1vh;
     font-size: 20px;
 }
 
-.content-reg input {
-    width: 30vh;
+#title {
+    text-align: center;
+    color: white;
 }
 
-#logOrSign {
-    padding-right: 5vh;
-    float: right;
+#return {
+    float: left;
 }
-
-#button-reg input {
-    width: 20vh;
-}
-
-#button-reg input:hover {
-    width: 21vh;
-    height: 5vh;
-    cursor: pointer;
-}
-
-body {
-    background-color: rgba(55, 136, 142, 0.6);
-}
-
-

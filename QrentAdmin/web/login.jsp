@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title></title>
     </head>
     <body>
         <%
@@ -26,6 +26,7 @@
                 ps.setString(1, username);
 
                 ResultSet res = ps.executeQuery();
+             
                 if (res.next()) {
                     if (res.getString("password").equals(password)) {
                         session.setAttribute("user", username);
@@ -36,10 +37,12 @@
                             response.sendRedirect("homepage.jsp");
                         }
                     } else {
-                        out.println("<p>Incorrect password.</p>");
+                        out.println("<script>alert('The password you’ve entered is incorrect.')</script>");
+                        out.println("<script>window.location='index.jsp'</script>");
                     }
                 } else {
-                    out.println("<p>User doesn't exist.</p>");
+                    out.println("<script>alert('The password you’ve entered is incorrect.')</script>");
+                    out.println("<script>window.location='index.jsp'</script>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);

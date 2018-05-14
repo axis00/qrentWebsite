@@ -8,8 +8,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         
-        <title>JSP Page</title>
+        <title>Reject Service Provider</title>
     </head>
     <body>
         <%
@@ -21,7 +22,7 @@
                 response.setContentType("text/html");
                 
                 String username = request.getParameter("username");
-                PreparedStatement ps = con.prepareStatement("UPDATE users SET status='approved' WHERE username=?");
+                PreparedStatement ps = con.prepareStatement("UPDATE users SET status='rejected' WHERE username=?");
                 ps.setString(1, username);
                 
                 ps.executeUpdate();
@@ -32,6 +33,5 @@
                 out.println(ex);
             }
         %>
-        <a href = "homepage.jsp">Home</a>
     </body>
 </html>

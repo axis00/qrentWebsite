@@ -8,6 +8,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        
         <title>JSP Page</title>
     </head>
     <body>
@@ -20,7 +22,7 @@
                 response.setContentType("text/html");
 
                 String username = request.getParameter("username");
-                PreparedStatement ps = con.prepareStatement("DELETE FROM users WHERE username=?");
+                PreparedStatement ps = con.prepareStatement("UPDATE users SET status='disabled' WHERE username=?");
                 ps.setString(1, username);
 
                 ps.executeUpdate();
@@ -29,5 +31,7 @@
                 out.println(ex);
             }
         %>
+        
+        
     </body>
 </html>
