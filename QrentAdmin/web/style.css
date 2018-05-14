@@ -1,5 +1,27 @@
-body {
-    background-color: #f7ebec;
+#body {
+    background-color: #F7EBEC;
+}
+
+#login-logo{
+    width: 25vh;
+    margin-top: 50px;
+    margin-bottom: 2.5px;
+}
+
+#formblock {
+    padding-right: 40%;
+    padding-left: 40%;
+}
+
+
+#loginButton{
+    background-color: #0B5351;
+    border-color: #0B5351;
+}
+
+#loginButton:hover{
+    background-color: #37888E;
+    border-color: #37888E;
 }
 
 #navbar-container {
