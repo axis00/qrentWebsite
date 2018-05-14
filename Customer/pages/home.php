@@ -1,5 +1,5 @@
 <?php
-	require "session.php";
+	require "../php/session.php";
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +9,6 @@
 </head>
 <body>
 	<p><?php echo "$current_session"; ?></p>
-	<a href="logout.php"><input type="button" value="Logout"></a>
+	<a href="../php/logout.php"><input type="button" value="Logout"></a>
 </body>
 </html>

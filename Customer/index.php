@@ -1,5 +1,5 @@
 <script>
-    function invalidPass(){
+    function invalidPassword(){
         alert("Invalid Password, Try Again");
     }
 
@@ -7,8 +7,8 @@
         alert("Invalid User, Try Again");
     }
 
-    function success(){
-        window.location.href = "http://laboratory/pages/start.php"
+    function registrationSuccess(){
+        window.location.href = "http://laboratory/pages/home.php"
     }
 </script>
 
@@ -28,7 +28,7 @@
         if($count == 1){
                 if(password_verify($password, $passwordVerify)){
                 $_SESSION['user'] = $username;
-                echo "<script>success()</script>";
+                echo "<script>registrationSuccess()</script>";
                 }else{
                 echo "<script>invalidPassword()</script>";
                 }
@@ -44,6 +44,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <link rel="stylesheet" href="css/style.css">
         <title>Qrent</title>
     </head>
@@ -63,7 +64,7 @@
         
         <div class="search-bar">
             <input type="text" class="search-field" name="search" placeholder="Search...">
-            <input type="submit" class="search_button" name="search-button" value="Search">
+            <input type="submit" class="search-button"  value="Search">
         </div>
     
     </body>

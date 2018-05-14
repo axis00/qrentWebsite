@@ -16,7 +16,7 @@
         
         require "../../connectTodb.php";
 
-        if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
+        if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['addressNo']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];
             $last = $_POST['lastName'];
             $birthday = $_POST['birthday'];
@@ -25,13 +25,22 @@
             $username = $_POST['username'];
             $password = $_POST['password'];
             $verifyPassword = $_POST['verifyPassword'];
+            $addressNo = $_POST['addressNo'];
             $street = $_POST['street'];
             $municipality = $_POST['municipality'];
             $province = $_POST['province'];
             $postalCode = $_POST['postalCode'];
             $registration_date = date("Y/m/d");
             $type = "Client";
+            $addressType = "Home";
             $status = "pending";
+            $addressId = 10000;
+            $query = "SELECT addressID FROM Address";
+            $results = mysqli_query($conn, $query);
+            $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
+            $count = mysqli_num_rows($results);
+            $addIdgen = $row['addressID'];
+            
              
             if($verifyPassword != $password){
                 echo "<script>passwordValidationF()</script>";
@@ -39,13 +48,19 @@
                 $password = password_hash($password, PASSWORD_DEFAULT); 
                 $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
                 $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
+                
+            while ($addressId == $addIdgen){
+                $addressId++;                
+            }
+                $stmt1 = $conn->prepare("INSERT INTO Address(addressID, addressNo, street, municipality, province, postalCode, addressType) VALUES(?,?,?,?,?,?,?)");
+                $stmt1->bind_param("sssssss", $addressId, $addressNo, $street, $municipality, $province, $postalCode, $addressType);
 
-                if(!$stmt->execute()){
-                     echo $stmt->error;   
-                }else{
+                if(!$stmt->execute() || !$stmt1->execute()){
+                    echo $stmt->error;
+                    echo $stmt1->error;
+                }
                     echo "<script>successfull()</script>";
                 }
-            }
         }
     ?>
 
@@ -87,6 +102,8 @@
                     </p>
                 
                     <p>Address: <br>
+                        <input type="text" name="addressNo" placeholder="Address Number"> <br>
+                        
                         <input type="text" name="street" placeholder="Street"> <br>
                 
                         <input type="text" name=" municipality" placeholder="Municipality"> <br>

@@ -1,16 +1,7 @@
 body {
-	margin: 0;
-    background-color: #0B5351;
+	background-color: #0B5351;
+    margin: 0;
     overflow: hidden;
-    
-}
-
-.navigation-bar{
-    display: inline-block;
-    border: solid 2px #37888E;
-    padding: 3vh;
-    width: 100%;
-    background-color: #37888E;
 }
 
 .search-bar {
@@ -19,56 +10,56 @@ body {
 }
 
 .search-field {
-    width: 60%;
     font-size: 30px;
+    margin-right: 0;
+    width: 60%;
 }
 
 .search_button {
+    font-size: 30px;   
     width: 15%;
-    font-size: 30px;
 }
 
 
 .button {
     background-color: white;
-    border-radius: 3vh;
-    padding-left: 2vh;
-    width: 20vh;
-    padding-right: 1vh;
     border: solid 2px white;
-    transition: transform .2s;
-}
-
-.button:hover {
-    transform: scale(1.2);    
+    border-radius: 3vh;
+    margin-right: 2vh;
+    transition: transform 0.2s;
+    width: 15vh;
+    
 }
 
 .button:focus {
     outline: 0;
 }
 
+.button:hover {
+    transform: scale(1.2);    
+}
+
 .button-register {
     background-color: white;
+    border: solid 2px white;
     border-radius: 3vh;
     padding-left: 1vh;
     padding-right: 1vh;
-    border: solid 2px white;
-    transition: transform .2s;
-}
-
-.button-register:hover {
-    transform: scale(1.2);    
+    transition: transform 0.2s;
 }
 
 .button-register:focus {
     outline: 0;
 }
 
+.button-register:hover {
+    transform: scale(1.1);    
+}
+
 .content-register {
+    color: white;
     margin-top: 4vh;
     text-align: center;
-    color: white;
-    
 }
 
 .content-register input {
@@ -76,8 +67,37 @@ body {
     
 }
 
+.navigation-bar{
+    background-color: #37888E;
+    border: solid 2px #37888E;
+    display: inline-block;
+    padding-top: 2vh;
+    width: 100%;
+}
+
 .register-field input {
     font-size: 24px;
+}
+
+.search-button {
+    border-bottom-right-radius:  3vh;
+    border-top-right-radius: 3vh;
+    font-size: 30px;
+    background-color: white;
+    padding-right: 3vh;
+}
+
+.search-field {
+    border-top-left-radius: 3vh;
+    border-bottom-left-radius: 3vh;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:focus {
+    outline: 0;
 }
 
 #login-and-register {
@@ -86,15 +106,8 @@ body {
 }
 
 #login-and-register input {
-    padding-left: 1vh;
     font-size: 20px;
+    padding-left: 1vh;
+    margin-right: 2vh;
 }
 
-#title {
-    text-align: center;
-    color: white;
-}
-
-#return {
-    float: left;
-}
