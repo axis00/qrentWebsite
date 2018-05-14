@@ -44,7 +44,7 @@
                 </div>
             </div>
             <%
-               if (session.getAttribute("user") != "super"){ %>
+               if (session.getAttribute("username") != "super"){ %>
                    <%@ include file="nav.html"%>
                <%}else {%>
                    <%@include file="supernav.html"%>

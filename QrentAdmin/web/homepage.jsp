@@ -31,7 +31,7 @@
             </div>
         
            <%
-               if (session.getAttribute("user") != "super"){ %>
+               if (session.getAttribute("username") != "super"){ %>
                    <%@ include file="nav.html"%>
                <%}else {%>
                    <%@include file="supernav.html"%>
@@ -39,7 +39,9 @@
                %>
             
             <div class="pricing-header">
+
                 <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("user"));%></b>!</h1>
+
             </div>
             <br><br>
             <div class="card-deck">
