@@ -33,7 +33,7 @@
                 
             </div>
                <div class="pricing-header">
-                    <h1 class="display-4">Welcome <b>SuperAdmin</b>!</h1>
+                    <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("username"));%></b>!</h1>
                 </div>
         </div>
         
