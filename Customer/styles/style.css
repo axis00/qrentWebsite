@@ -1,0 +1,51 @@
+body {
+	background-color: #461b7e;
+    margin: 0;
+}
+.btn-primary { 
+    width: 30%;
+}
+
+.jumbotron {
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30%;
+    align-items: center;
+}
+
+.jumbotron img{
+    margin-top: 10vh;
+    max-width: 50%;
+    height: auto;
+}
+
+.search-button {
+    border-bottom-right-radius:  3vh;
+    border-top-right-radius: 3vh;
+    font-size: 30px;
+    background-color: white;
+    padding-right: 3vh;
+}
+
+.navigation-bar {
+    position: static;
+    background-color: #37888e;
+    height: auto;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:focus {
+    outline: 0;
+}
+
+.search-field {
+    border-top-left-radius: 3vh;
+    border-bottom-left-radius: 3vh;
+}

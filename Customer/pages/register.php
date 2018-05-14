@@ -68,54 +68,58 @@
 <html>
     
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../styles/style.css">
         <title>Qrent</title>
-        <link rel="stylesheet" href="../css/style.css">
     </head>
     
     <body>
         <div class="navigation-bar" id="title">
-            <p>
-                <a href="../index.php"><input type="button" class="button-register" id="return" value="Back"></a>
-                REGISTRATION FORM
-            </p>
+           <ul class="nav justify-content-center">
+               <li class="nav-item">
+                   <a class="nav-link" href="../index.php">Login</a>
+               </li>
+           </ul>
         </div>
         
-        <div class="content-register">
+        <div class="jumbotron class="form-control"">
             <form action="register.php" method="post">
                 <div class="register-field">          
-                    <input type="text" name="firstName" placeholder="First Name"><br>
+                    <input type="text" class="form-control" name="firstName" placeholder="First Name"><br>
             
-                    <input type="text" name="lastName" placeholder="Last Name"><br>
+                    <input type="text" class="form-control" name="lastName" placeholder="Last Name"><br>
                 
-                    <input type="email" name="email" placeholder="E-mail Address"><br>
+                    <input type="email" class="form-control" name="email" placeholder="E-mail Address"><br>
             
-                    <input type="text" name="mobileNumber" placeholder="Mobile Number"><br>
+                    <input type="text" class="form-control" name="mobileNumber" placeholder="Mobile Number"><br>
             
-                    <input type="text" name="username" placeholder="Username"><br>
+                    <input type="text" class="form-control" name="username" placeholder="Username"><br>
             
-                    <input type="password" name="password" placeholder="Password"><br>
+                    <input type="password" class="form-control" name="password" placeholder="Password"><br>
             
-                    <input type="password" name="verifyPassword" placeholder="Re-enter Password"><br>
+                    <input type="password" class="form-control" name="verifyPassword" placeholder="Re-enter Password"><br>
             
                     <p>Birthday: <br>
-                        <input type="date" name="birthday"><br>
+                        <input type="date" class="form-control" name="birthday"><br>
                     </p>
                 
                     <p>Address: <br>
-                        <input type="text" name="addressNo" placeholder="Address Number"> <br>
+                        <input type="text" class="form-control" name="addressNo" placeholder="Address Number"> <br>
                         
-                        <input type="text" name="street" placeholder="Street"> <br>
+                        <input type="text" class="form-control" name="street" placeholder="Street"> <br>
                 
-                        <input type="text" name=" municipality" placeholder="Municipality"> <br>
+                        <input type="text" class="form-control" name=" municipality" placeholder="Municipality"> <br>
             
-                        <input type="text" name="province" placeholder="Province"> <br>
+                        <input type="text" class="form-control" name="province" placeholder="Province"> <br>
                             
-                        <input type="text" name="postalCode" placeholder="Postal Code"> <br>
+                        <input type="text" class="form-control" name="postalCode" placeholder="Postal Code"> <br>
                     </p>
                 </div>
                 
                 <div id="button-reg">
-                    <input type="submit" class="button-register" value="Register"> <a href="../index.php"><input type="button" class="button-register" value="return"></a>
+                    <input type="submit" class="btn btn-primary" value="Register">
                 </div>
             </form>
         </div>

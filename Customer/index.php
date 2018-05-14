@@ -1,10 +1,10 @@
 <script>
     function invalidPassword(){
-        alert("Invalid Password, Try Again");
+        alert("Invalid Password");
     }
 
     function invalidUser(){
-        alert("Invalid User, Try Again");
+        alert("User not registered");
     }
 
     function registrationSuccess(){
@@ -44,28 +44,25 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="styles/bootstrap-4.0.0/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="styles/style.css">
         <title>Qrent</title>
     </head>
     
     <body>
         
-        <div class="navigation-bar">
-            <div id="login-and-register">
+        <div class="jumbotron">
                 <form method="post">
-                <input type="text" name="username" placeholder="Username">
-                <input type="password" name="password" placeholder="Password">
-                <input type="submit" class="button" value="Login">  
-                <a href="pages/register.php"><input type="button" class="button" value="Register"></a>
+                    <img src="images/qrent-logo.png">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username"><br>
+                        <input type="password" class="form-control" id="password"  name="password" placeholder="Password"><br>
+                    </div>
+
+                     <input type="submit" class="btn btn-primary" value="Login"><br><br>
+                    <p>Not yet registerd? <a href="pages/register.php">Register here.</a></p>
                 </form>
             </div>
-        </div>
-        
-        <div class="search-bar">
-            <input type="text" class="search-field" name="search" placeholder="Search...">
-            <input type="submit" class="search-button"  value="Search">
-        </div>
-    
+            
     </body>
 </html>
