@@ -14,25 +14,18 @@
     </head>
     <body style="background-color:#f7ebec">
         <div class="container">
-            <p>Session id = <%out.println(session.getId());%></p>
             <div class='page-header'>
                 <h1>Manage Users</h1>
             </div>
             <table class="table table-hover">
             <tr>
                 <th>Username</th>
-                <th></th>
                 <th>First Name</th>
-                <th></th>
                 <th>Last Name</th>
-                <th></th>
                 <th>Email</th>
-                <th></th>
                 <th>Type</th>
-                <th></th>
                 <th>Status</th>
-                <th></th>
-                <th></th>
+                <th>Action</th>
             </tr>
             <%
                 Connection con;
@@ -54,9 +47,9 @@
                         out.println("<td>" + res.getString("lastname") + "</td>");
                         out.println("<td>" + res.getString("email") + "</td>");
                         out.println("<td>" + res.getString("type") + "</td>");
-                        out.println("<td>" + res.getString("status") + "</td>");
+                        out.println("<td>" + res.getString("status").toUpperCase() + "</td>");
                         out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Remove user' class='btn btn-warning'></form></td>");
+                                + res.getString("username") + "><input type = 'submit' value = 'Remove User' class='btn btn-warning'></form></td>");
                         out.println("</tr>");
                     }
                     
