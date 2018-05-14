@@ -46,7 +46,7 @@
 
                 if (res.next()) {
                     if (res.getString("password").equals(password)) {
-                        session.setAttribute("user", username);
+                        session.setAttribute("username", usernamename);
                         session.setMaxInactiveInterval(3600);
                         if (res.getString("username").equals("super")) {
                             response.sendRedirect("superhomepage.jsp");
