@@ -22,7 +22,7 @@
                 <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
                     <h1>Approve Pending Users</h1>
                 </div>
-            </div>
+        </div>
             
             <%@ include file="nav.html" %>
             
