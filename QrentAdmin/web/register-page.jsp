@@ -20,7 +20,7 @@
             </div>
             <form method="post" action="register.jsp">
                 <p>Username:</p>
-                <input type="text" name="username" id="username" onblur="checkUsername()"/><span id="exists"></span>
+                <input type="text" name="username" id="username" onblur="checkUsername()"/><span id="usernameExists"></span>
                 <p>Password:</p>
                 <input type="password" name="password" id="password"/>
                 <p>First Name:</p>
@@ -28,7 +28,7 @@
                 <p>Last Name:</p>
                 <input type="text" name="lastname" id="lastname"/>
                 <p>Email</p>
-                <input type="text" name="email" id="email"/>
+                <input type="text" name="email" id="email" onblur="checkEmail()"/><span id="emailExists"></span>
                 <br><br><input class="btn btn-primary btn-lg" type="submit" value="Register" id="registerButton"/>
             </form>
             
@@ -48,61 +48,34 @@
                 }
                 xmlhttp.onreadystatechange=function() {
                     if (xmlhttp.readyState == 4) {
-                        document.getElementById("exists").innerHTML = "";
-                        document.getElementById("exists").innerHTML = xmlhttp.responseText;
-                        console.log("exists")
+                        document.getElementById("usernameExists").innerHTML = "";
+                        document.getElementById("usernameExists").innerHTML = xmlhttp.responseText;
                     }
                 }
                 xmlhttp.open("GET",urls,true);
                 xmlhttp.send();
                 console.log("called");
             }
-    /*
-            var username = document.getElementById("username").value;
-            var email = document.getElementById("email").value;
-            var url = "username-exists.jsp?username=" + username;
-            
-            function checkUsername(){
-                var xmlhttp = new XMLHttpRequest();
-                
-                xmlhttp.onreadystatechange = function(){
-                    
-                    if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
-                        document.getElementById("usernameExists").innerHTML = xmlhttp.responseText;
-                            
-                    }
-                };
-                try{
-                    xmlhttp.open("GET",url,true);
-                    xmlhttp.send();
-                } catch (e){
-                    alert("lol");
+            function checkEmail() {
+                var xmlhttp;
+                var email = document.getElementById("email").value;
+                var urls="email-exists.jsp?email=" + email;
+
+                if (window.XMLHttpRequest) {
+                    xmlhttp = new XMLHttpRequest();
+                } else { 
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
                 }
-                console.log("works");
-            }
-        
-                if(username){
-                    $.ajax({
-                        type: 'post',
-                        url: 'username-exists.jsp',
-                        data: {
-                            username : username
-                        },
-                        success: function (response) {
-                            $('#usernameExists').html(response);
-                            if(response === 'OK'){
-                                return true;
-                            } else {
-                                return false;
-                            }
-                        }
-                    });
-                } else {
-                    $('#usernameExists').html("");
-                    return false;
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState == 4) {
+                        document.getElementById("emailExists").innerHTML = "";
+                        document.getElementById("emailExists").innerHTML = xmlhttp.responseText;
                     }
-            }*/
-            
+                }
+                xmlhttp.open("GET",urls,true);
+                xmlhttp.send();
+                console.log("called2")
+            }     
         </script>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

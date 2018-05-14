@@ -33,20 +33,21 @@
          
                 response.setContentType("text/html");
 
-                String username = request.getParameter("username");
+                String email = request.getParameter("email");
                 
-                PreparedStatement validate = con.prepareStatement("SELECT USERNAME FROM users where username=?");
-                validate.setString(1,username);
+                PreparedStatement validate = con.prepareStatement("SELECT email FROM users where email=?");
+                validate.setString(1,email);
                 ResultSet val = validate.executeQuery();
                 
                 
                 if(val.next()){
                     out.println("<font color=red>");
-                    out.println("Username taken.");
+                    out.println("Email taken.");
                     out.println("</font>");
                 } else {
                     out.print("OK");
                 }
+                
             } catch (SQLException ex) {
                 out.println(ex);
             }
