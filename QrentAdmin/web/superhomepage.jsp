@@ -35,6 +35,7 @@
                <div class="pricing-header">
                     <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("username"));%></b>!</h1>
                 </div>
+                <a class="nav-link3 btn-lg" href="register-page.jsp">Register Admin</a>
         </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
