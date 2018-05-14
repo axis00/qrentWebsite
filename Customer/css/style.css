@@ -1,5 +1,5 @@
 body {
-	background-color: #0B5351;
+	background-color: bisque;
     margin: 0;
     overflow: hidden;
 }
@@ -103,6 +103,7 @@ body {
 #login-and-register {
     float: right;
     margin-right: 6vh;
+    background-color: pink;
 }
 
 #login-and-register input {
@@ -134,4 +135,8 @@ body {
 
 #return {
     float: left;
+}
+
+#logo{
+    height: 10%;
 }
