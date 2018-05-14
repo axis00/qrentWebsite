@@ -4,11 +4,28 @@
         alert("Password does not match");
         window.location.href = "http://laboratory/pages/register.php";
     }
+
+    function usernameValidate()
+    {
+        alert("Username already exists");
+        window.location.href = "http://laboratory/pages/register.php";
+    }
+
+    function emailValidate()
+    {
+        alert("Email already exists");
+        window.location.href = "http://laboratory/pages/register.php";      
+    }
     
     function successfull()
     {
         alert("Registration Success!");
-        window.location.href = "http://laboratory/";
+        window.location.href = "http://laboratory/pages/home";
+    }
+
+    function allFields()
+    {
+        alert("All fields must be filled");
     }
 </script>
 
@@ -34,24 +51,38 @@
             $type = "Client";
             $addressType = "Home";
             $status = "pending";
-            $addressId = 10000;
-            $query = "SELECT addressID FROM Address";
+
+            $query = "SELECT email FROM users where email = '$email '";
             $results = mysqli_query($conn, $query);
             $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
             $count = mysqli_num_rows($results);
-            
-             
-            if($verifyPassword != $password){
-                echo "<script>passwordValidationF()</script>";
-            }else{
-                $password = password_hash($password, PASSWORD_DEFAULT); 
-                $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
-                $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
 
-                if(!$stmt->execute()){
-                    echo $stmt->error;
+
+        if($first == null || $last == null || $birthday == null || $email == null || $mobile == null || $username == null || $password == null || $verifyPassword == null || $addressNo == null || $street == null || $municipality == null || $province == null || $postalCode == null){
+                echo "<script> allFields() </script>";
+        }else{
+            $query2 = "SELECT username FROM users where username = '$username'";
+            $results2 = mysqli_query($conn, $query2);
+            $row2 = mysqli_fetch_array($results2, MYSQLI_ASSOC); 
+            $count2 = mysqli_num_rows($results2);
+            
+            if($count2 == 1){
+                echo "<script>usernameValidate()</script>";
+                }else{
+                    if($count == 1){
+                        echo "<script>emailValidate()</script>";
+                    }else{
+                        $password = password_hash($password, PASSWORD_DEFAULT); 
+                        $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
+                        $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
+
+                    if(!$stmt->execute()){
+                        echo $stmt->error;
+                        }
+                        $_SESSION['user'] = $username;
+                        echo "<script>successfull()</script>";
+                    }
                 }
-                    echo "<script>successfull()</script>";
                 }
         }
     ?>
@@ -76,11 +107,11 @@
             
                     <input type="text"class="form-control" name="lastName" placeholder="Last Name"><br>
                 
+                    <input type="text" class="form-control" name="username" placeholder="Username"><br>
+
                     <input type="email" class="form-control" name="email" placeholder="E-mail Address"><br>
             
                     <input type="text" class="form-control" name="mobileNumber" placeholder="Mobile Number"><br>
-            
-                    <input type="text" class="form-control" name="username" placeholder="Username"><br>
             
                     <input type="password" class="form-control" name="password" placeholder="Password"><br>
             

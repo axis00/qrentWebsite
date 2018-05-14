@@ -59,7 +59,9 @@ body {
 .navigation-bar{
     width: 100%;
     height: 10vh;
-    display: table;
+    display: inline-block;
+    position: fixed;
+    margin-top: 0px;
 }
 .navigation-bar img{
     height: 9vh;
@@ -101,8 +103,16 @@ body {
 #sidenav{
     background:white;
     height: 100%;
+    padding-top: 9vh;
+    position:static;
 }
 
+
 .content{
+    height: 100%;
     background-color: white;
+    padding-top: 11vh;
+    position:static;
+    width: 90%;
+    margin-left: 5%;
 }
