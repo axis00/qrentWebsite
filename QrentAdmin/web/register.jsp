@@ -1,8 +1,5 @@
-<%-- 
-    Document   : RegisterAdmin
-    Created on : May 5, 2018, 12:29:23 PM
-    Author     : Rammaria Advincula
---%>
+
+<%@page import="java.security.MessageDigest"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.sql.DriverManager"%>
@@ -34,6 +31,23 @@
 
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
+                
+                MessageDigest mdAlgorithm = MessageDigest.getInstance("MD5");
+                mdAlgorithm.update(password.getBytes());
+                byte[] digest = mdAlgorithm.digest();
+                StringBuffer hex = new StringBuffer();
+                
+                for (int i = 0; i < digest.length; i++){
+                    password = Integer.toHexString(0xFF & digest[i]);
+                    
+                    if (password.length() < 2){
+                        password = "0" + password;
+                    }
+                    
+                    hex.append(password);
+                }
+                password = hex.toString();
+                
                 String firstname = request.getParameter("firstname");
                 String lastname = request.getParameter("lastname");
                 String email = request.getParameter("email");
