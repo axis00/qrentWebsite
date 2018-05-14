@@ -1,3 +1,4 @@
+<%@page import="java.security.MessageDigest"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.SQLException"%>
@@ -21,6 +22,22 @@
 
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
+                
+                MessageDigest mdAlgorithm = MessageDigest.getInstance("MD5");
+                mdAlgorithm.update(password.getBytes());
+                byte[] digest = mdAlgorithm.digest();
+                StringBuffer hex = new StringBuffer();
+                
+                for (int i = 0; i < digest.length; i++){
+                    password = Integer.toHexString(0xFF & digest[i]);
+                    
+                    if (password.length() < 2){
+                        password = "0" + password;
+                    }
+                    
+                    hex.append(password);
+                }
+                password = hex.toString();
 
                 PreparedStatement ps = con.prepareStatement("SELECT username, password, status FROM users WHERE ((type='Admin') AND (username = ?))");
                 ps.setString(1, username);

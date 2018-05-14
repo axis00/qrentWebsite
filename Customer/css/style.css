@@ -1,0 +1,137 @@
+body {
+	background-color: #0B5351;
+    margin: 0;
+    overflow: hidden;
+}
+
+.search-bar {
+    margin-left: 25%;
+    margin-top: 20%;
+}
+
+.search-field {
+    font-size: 30px;
+    margin-right: 0;
+    width: 60%;
+}
+
+.search_button {
+    font-size: 30px;   
+    width: 15%;
+}
+
+
+.button {
+    background-color: white;
+    border: solid 2px white;
+    border-radius: 3vh;
+    margin-right: 2vh;
+    transition: transform 0.2s;
+    width: 15vh;
+    
+}
+
+.button:focus {
+    outline: 0;
+}
+
+.button:hover {
+    transform: scale(1.2);    
+}
+
+.button-register {
+    background-color: white;
+    border: solid 2px white;
+    border-radius: 3vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+    transition: transform 0.2s;
+}
+
+.button-register:focus {
+    outline: 0;
+}
+
+.button-register:hover {
+    transform: scale(1.1);    
+}
+
+.content-register {
+    color: white;
+    margin-top: 4vh;
+    text-align: center;
+}
+
+.content-register input {
+    margin-top: 1.5vh;
+    
+}
+
+.navigation-bar{
+    background-color: #37888E;
+    border: solid 2px #37888E;
+    display: inline-block;
+    padding-top: 2vh;
+    width: 100%;
+}
+
+.register-field input {
+    font-size: 24px;
+}
+
+.search-button {
+    border-bottom-right-radius:  3vh;
+    border-top-right-radius: 3vh;
+    font-size: 30px;
+    background-color: white;
+    padding-right: 3vh;
+}
+
+.search-field {
+    border-top-left-radius: 3vh;
+    border-bottom-left-radius: 3vh;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:focus {
+    outline: 0;
+}
+
+#login-and-register {
+    float: right;
+    margin-right: 6vh;
+}
+
+#login-and-register input {
+    font-size: 20px;
+    padding-left: 1vh;
+    margin-right: 2vh;
+}
+
+.nav_header h1{
+    color: white;
+}
+
+.nav_header{
+    width: 10%;
+    float: left;
+    background: pink;
+}
+
+#logout{
+    float: right;
+    margin-right: 6vh;
+    background: pink;
+}
+
+#title {
+    text-align: center;
+    color: white;
+}
+
+#return {
+    float: left;
+}

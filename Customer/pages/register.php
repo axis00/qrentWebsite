@@ -118,9 +118,8 @@
                     </p>
                 </div>
                 
-                <div id="button-reg">
-                    <input type="submit" class="btn btn-primary" value="Register">
-                </div>
+                <input type="submit" class="btn btn-primary" value="Register">
+                    <a href="home.php"><input type="submit" class="button-register" value="Register"></a> <a href="../index.php"><input type="button" class="button-register" value="return"></a>
             </form>
         </div>
 
