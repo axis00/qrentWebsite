@@ -39,7 +39,6 @@
             $results = mysqli_query($conn, $query);
             $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
             $count = mysqli_num_rows($results);
-            $addIdgen = $row['addressID'];
             
              
             if($verifyPassword != $password){
@@ -48,16 +47,9 @@
                 $password = password_hash($password, PASSWORD_DEFAULT); 
                 $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
                 $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
-                
-            while ($addressId == $addIdgen){
-                $addressId++;                
-            }
-                $stmt1 = $conn->prepare("INSERT INTO Address(addressID, addressNo, street, municipality, province, postalCode, addressType) VALUES(?,?,?,?,?,?,?)");
-                $stmt1->bind_param("sssssss", $addressId, $addressNo, $street, $municipality, $province, $postalCode, $addressType);
 
-                if(!$stmt->execute() || !$stmt1->execute()){
+                if(!$stmt->execute()){
                     echo $stmt->error;
-                    echo $stmt1->error;
                 }
                     echo "<script>successfull()</script>";
                 }
@@ -76,20 +68,13 @@
     </head>
     
     <body>
-        <div class="navigation-bar" id="title">
-           <ul class="nav justify-content-center">
-               <li class="nav-item">
-                   <a class="nav-link" href="../index.php">Login</a>
-               </li>
-           </ul>
-        </div>
-        
-        <div class="jumbotron class="form-control"">
+            <div class="jumbotron">
+                <h1>Registration</h1>
             <form action="register.php" method="post">
-                <div class="register-field">          
+                <div class="form-group">          
                     <input type="text" class="form-control" name="firstName" placeholder="First Name"><br>
             
-                    <input type="text" class="form-control" name="lastName" placeholder="Last Name"><br>
+                    <input type="text"class="form-control" name="lastName" placeholder="Last Name"><br>
                 
                     <input type="email" class="form-control" name="email" placeholder="E-mail Address"><br>
             
@@ -118,10 +103,10 @@
                     </p>
                 </div>
                 
-                <input type="submit" class="btn btn-primary" value="Register">
-                    <a href="home.php"><input type="submit" class="button-register" value="Register"></a> <a href="../index.php"><input type="button" class="button-register" value="return"></a>
+                <div id="button-reg">
+                    <input type="submit" class="btn btn-primary" value="Register">
+                </div>
             </form>
-        </div>
-
+            </div>
     </body>
 </html>
