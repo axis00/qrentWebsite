@@ -111,3 +111,27 @@ body {
     margin-right: 2vh;
 }
 
+.nav_header h1{
+    color: white;
+}
+
+.nav_header{
+    width: 10%;
+    float: left;
+    background: pink;
+}
+
+#logout{
+    float: right;
+    margin-right: 6vh;
+    background: pink;
+}
+
+#title {
+    text-align: center;
+    color: white;
+}
+
+#return {
+    float: left;
+}

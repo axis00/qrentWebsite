@@ -115,7 +115,7 @@
                 </div>
                 
                 <div id="button-reg">
-                    <input type="submit" class="button-register" value="Register"> <a href="../index.php"><input type="button" class="button-register" value="return"></a>
+                    <a href="home.php"><input type="submit" class="button-register" value="Register"></a> <a href="../index.php"><input type="button" class="button-register" value="return"></a>
                 </div>
             </form>
         </div>
