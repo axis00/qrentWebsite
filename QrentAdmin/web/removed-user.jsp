@@ -14,10 +14,11 @@
     </head>
     <body>
         <div class="container">
-            <p>Session id = <%out.println(session.getId());%></p>
             <div class='page-header'>
                 <h1>Manage Users</h1>
             </div>
+            
+            <%@ include file="nav.html" %>
             
             <ul class="nav nav-tabs" id="reject">
                 <li role="presentation"><a href="manage-users.jsp">All Users</a></li>

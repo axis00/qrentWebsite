@@ -17,6 +17,8 @@
             <div class='page-header'>
                 <h1>Manage Users</h1>
             </div>
+            
+            <%@include file="nav.html" %>
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="manage-users.jsp">All Users</a></li>
                 <li role="presentation"><a href="approved-user.jsp">Active Users</a></li>

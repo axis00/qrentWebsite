@@ -16,18 +16,9 @@
         <div class="container">
             <div class='page-header'>
                 <h1>Manage Users</h1>
-
-                <div class="container" id="navbar-container">
-                    <nav class="navbar navbar-default" style="background-color: ">
-                        <ul class="nav navbar-nav">
-                            <li><a href="approve-accounts.jsp">Approve User Accounts</a></li>
-                            <li><a href="manage-users.jsp">Manage U sers</a></li>
-                            <li><a href="user-transaction.jsp">Transaction History</a></li>
-                            <li><a href="logout.jsp">Logout</a></li>
-                        </ul>
-                    </nav>
-                </div>
-
+                
+                <%@ include file="nav.html" %>
+                
                 <div>
                     <ul class="nav nav-tabs">
                         <li role="presentation"><a href="manage-users.jsp">All Users</a></li>

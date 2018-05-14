@@ -24,11 +24,12 @@
             <div class="page-header">
                 <h1>Super Admin Home Page</h1>
             </div>
+            
             <div class="container" id="navbar-container">
                 <nav class="navbar navbar-default" style="background-color: ">
                     <ul class="nav navbar-nav">
                         <li><a href="register-page.jsp">Register New Admin</a></li>
-                        <li><a href="manage-users.jsp">Remove users</a></li>
+                        <li><a href="manage-users.jsp">Manage Users</a></li>
                         <li><a href="logout.jsp">Logout</a></li>
                     </ul>
                 </nav>
