@@ -30,6 +30,11 @@
                     <ul class="nav navbar-nav">
                         <li><a href="register-page.jsp">Register New Admin</a></li>
                         <li><a href="manage-users.jsp">Manage Users</a></li>
+                        <li><a href="approve-accounts.jsp">Approve User Accounts</a></li>
+                        <li><a href="user-transaction.jsp">Transaction History</a></li>
+                        <li><a href="logout.jsp">Logout</a></li>
+                </ul>
+            </nav>
                         <li><a href="logout.jsp">Logout</a></li>
                     </ul>
                 </nav>
