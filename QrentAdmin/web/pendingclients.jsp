@@ -25,8 +25,13 @@
                     <h1>Approve Pending Users</h1>
                 </div>
             </div>
-            
-            <%@ include file="nav.html" %>
+            <%
+               if (session.getAttribute("user") != "super"){ %>
+                   <%@ include file="nav.html"%>
+               <%}else {%>
+                   <%@include file="supernav.html"%>
+                <%}
+               %>
             
             <nav class="navbar bg-faded">
                 <div class="navbar-collapse justify-content-md-center">
@@ -93,5 +98,6 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
     </body>
 </html>

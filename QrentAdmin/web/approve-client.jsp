@@ -35,5 +35,7 @@
                 out.println(ex);
             }
         %>
+            </div>
+        </footer>
     </body>
 </html>

@@ -25,7 +25,7 @@
                 tr = table.getElementsByTagName("tr");
 
                 for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[1];
+                    td = tr[i].getElementsByTagName("td")[0];
                     if (td) {
                         if (td.innerHTML.toUpperCase().indexOf(search) > -1) {
                             tr[i].style.display = "";
@@ -37,16 +37,28 @@
             }
         </script>
     </head>
-    <body>
+    <body id="body">
         <div class="container">
-            <div class="page-header">
-                <h1>Transaction History</h1>
+            <div class="row hidden-xs topper" id="top-nav-container">
+                <div class="cols-xs-7 col-sm-7">
+                    <img src="qrent-logo.png" id="nav-logo" class="img-responsive"/>
+                </div>
+                <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
+                    <h1>Manage Users</h1>
+                </div>
             </div>
-
-            <%@ include file="nav.html" %>
             
-            <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search transaction no..." class="search">
-            <table class="table table-hover" id="transaction">
+            <%
+               if (session.getAttribute("user") != "super"){ %>
+                   <%@ include file="nav.html"%>
+               <%}else {%>
+                   <%@include file="supernav.html"%>
+                <%}
+               %>
+            
+            <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search transaction no..." class="search search-control">
+            <table class="table" id="transaction">
+                <thead>
                 <tr>
                     <th>Transaction Date</th>
                     <th>Transaction No.</th>
@@ -58,7 +70,7 @@
                     <th>Mode of payment</th>
                     <th></th>
                 </tr>
-
+                </thead>
                 <%
                     Connection con;
                     try {
@@ -80,7 +92,7 @@
                             }else{
                                 res.previous();
                                 while (res.next()) {
-                                    out.println("<tr>");
+                                    out.println("<tr scope='row' class='row-hover'>");
                                     out.println("<td>" + res.getString("paymentdate") + "</td>");
                                     out.println("<td>" + res.getString("paymentid") + "</td>");
                                     out.println("<td>" + res.getString("username") + "</td>");
@@ -103,5 +115,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
     </body>
 </html>

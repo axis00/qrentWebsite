@@ -22,8 +22,13 @@
                     <h1>Manage Users</h1>
                 </div>
             </div>
-            
-            <%@ include file="nav.html" %>
+            <%
+               if (session.getAttribute("user") != "super"){ %>
+                   <%@ include file="nav.html"%>
+               <%}else {%>
+                   <%@include file="supernav.html"%>
+                <%}
+               %>
             
             <nav class="navbar bg-faded">
                 <div class="navbar-collapse justify-content-md-center">

@@ -25,10 +25,17 @@
                 </div>
             </div>
         
-           
-            <%@ include file="nav.html" %>
+           <%
+               if (session.getAttribute("user") != "super"){ %>
+                   <%@ include file="nav.html"%>
+               <%}else {%>
+                   <%@include file="supernav.html"%>
+                <%}
+               %>
             
-            <p><big>Welcome <b><%out.println(session.getAttribute("user"));%></b>!</big></p>
+            <div class="pricing-header">
+            <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("user"));%></b>!</h1>
+            </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
