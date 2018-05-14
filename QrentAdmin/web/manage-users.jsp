@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <title>Manage Users</title>
     </head>
-    <body>
+    <body id="body">
         <div class="container">
             <div class='page-header'>
                 <h1>Manage Users</h1>
