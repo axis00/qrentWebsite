@@ -11,6 +11,26 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
         <title>Manage Users</title>
+        <script>
+            function searchword() {
+                var input, search, table, tr, td, i;
+                input = document.getElementById("keyword");
+                search = input.value.toUpperCase();
+                table = document.getElementById("users");
+                tr = table.getElementsByTagName("tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[0];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(search) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        </script>
     </head>
     <body id="body">
         <div class="container">
@@ -41,7 +61,9 @@
                     </ul>
                 </div>
         </nav>
-        <table class="table">
+               
+        <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search username..." class="search search-control">
+        <table class="table" id="users">
             <thead>
                 <tr>
                     <th>Username</th>

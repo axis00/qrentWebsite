@@ -1,5 +1,10 @@
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDateTime"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -34,8 +39,117 @@
                %>
             
             <div class="pricing-header">
-            <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("user"));%></b>!</h1>
+                <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("user"));%></b>!</h1>
             </div>
+            <br><br>
+            <div class="card-deck">
+            
+            <div class="card bg-info mb-3" style="max-width: 18rem;">
+                 <div class="card-header">Administration</div>
+                 <div class="card-body">
+                    <h5 class="card-title">Reminder</h5>
+                    <p class="card-text">Regularly check pending user accounts by clicking on <a href="approve-accounts.jsp" class="text-white">Approve User Accounts</a>.</p>    
+                </div>
+            </div>
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                 <div class="card-header">Statistics</div>
+                 <div class="card-body">
+                    <h5 class="card-title">User Count</h5>
+                    <%
+                        Connection con;
+                        try {
+                                
+                                Class.forName("com.mysql.jdbc.Driver");
+                                con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+
+                                response.setContentType("text/html");
+
+                                PreparedStatement ps = con.prepareStatement("SELECT COUNT(username) FROM users WHERE status = 'pending'");
+
+                                ResultSet res = ps.executeQuery();
+
+                                if (!res.next()){
+                                    out.println("<p class=\"card-text\">No Users Available</p>");
+                                }else{
+                                    res.previous();
+                                    while (res.next()) {
+                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> pending users in Qrent.</p>");
+                                        
+                                    }
+                                }
+                            } catch (SQLException ex) {
+                                out.println(ex);
+                            }
+                    %>
+                </div>
+                
+            </div>
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                 <div class="card-header">Statistics</div>
+                 <div class="card-body">
+                    <h5 class="card-title">User Count</h5>
+                    <%
+                       
+                        try {
+                                
+                                Class.forName("com.mysql.jdbc.Driver");
+                                con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+
+                                response.setContentType("text/html");
+
+                                PreparedStatement ps = con.prepareStatement("SELECT COUNT(username) FROM users WHERE status = 'approved'");
+
+                                ResultSet res = ps.executeQuery();
+
+                                if (!res.next()){
+                                    out.println("<p class=\"card-text\">No Users Available</p>");
+                                }else{
+                                    res.previous();
+                                    while (res.next()) {
+                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> active users in Qrent.</p>");
+                                        
+                                    }
+                                }
+                            } catch (SQLException ex) {
+                                out.println(ex);
+                            }
+                    %>
+                </div>               
+            </div>
+                
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                 <div class="card-header">Statistics</div>
+                 <div class="card-body">
+                    <h5 class="card-title">Transaction Count</h5>
+                    <%
+                        
+                        try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+
+                                response.setContentType("text/html");
+
+                                PreparedStatement ps = con.prepareStatement("SELECT COUNT(paymentID) FROM transaction");
+
+                                ResultSet res = ps.executeQuery();
+
+                                if (!res.next()){
+                                    out.println("<p class=\"card-text\">No Transaction Available</p>");
+                                }else{
+                                    res.previous();
+                                    while (res.next()) {
+                                        out.println("<p class=\"card-text\">There is/are <b>" + res.getString("COUNT(paymentID)") + "</b> transaction/s in Qrent.</p>");
+                                        
+                                    }
+                                }
+                            } catch (SQLException ex) {
+                                out.println(ex);
+                            }
+                    %>
+                </div>
+            </div>
+            </div>
+            
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

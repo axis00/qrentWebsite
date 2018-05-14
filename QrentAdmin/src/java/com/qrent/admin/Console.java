@@ -66,12 +66,7 @@ public class Console extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Consasdole at " + request.getContextPath() + "</h1>");
-            out.println("<footer class="footer">
-            <div class="container">
-                <span class="text-muted">9331B-G3</span>
-            </div>
-        </footer>
-    </body>");
+            out.println("<footer class=\"footer\" \n<div class=\"container\"> \n<span class=\"text-muted\">9331B-G3</span> \n</div> \n</footer> \n</body>");
             out.println("</html>");
         }
     }
