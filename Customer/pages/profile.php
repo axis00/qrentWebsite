@@ -38,7 +38,21 @@
     <div class="#sidenav">
     </div>
     <div class="content">
-        <php 
+<!--
+        <h2>Account Information:</h2>
+            
+            <h3>First name: </h3>
+            <?php
+                $firstname = mysqli_query($conn, "SELECT firstname FROM users where username = '$checkUser';");
+                echo "$firstname";
+            ?>
+            <br/>
+        <h3>Last name:</h3>
+            <?php
+                $lastname= mysqli_query($conn, "SELECT lastname FROM users where username = '$checkUser';");
+                echo "$flastname";
+            ?>
+-->
     </div>
 </body>
 </html>
