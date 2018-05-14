@@ -14,10 +14,11 @@
     </head>
     <body>
         <div class="container">
-            <p>Session id = <%out.println(session.getId());%></p>
             <div class='page-header'>
                 <h1>Manage Users</h1>
             </div>
+            
+            <%@ include file="nav.html" %>
             
             <ul class="nav nav-tabs" id="reject">
                 <li role="presentation"><a href="manage-users.jsp">All Users</a></li>
@@ -43,7 +44,7 @@
 
                     response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status = 'rejected'");
+                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status = 'rejected' ORDER BY type");
 
                     ResultSet res = ps.executeQuery();
 
@@ -55,7 +56,7 @@
                         out.println("<td>" + res.getString("lastname") + "</td>");
                         out.println("<td>" + res.getString("email") + "</td>");
                         out.println("<td>" + res.getString("type") + "</td>");
-                        out.println("<td>" + res.getString("status") + "</td>");
+                        out.println("<td>" + res.getString("status").toUpperCase() + "</td>");
                         out.println("</tr>");
                     }
                     

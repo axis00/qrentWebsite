@@ -18,23 +18,12 @@
                 <h1>Approve Pending User Accounts</h1>
             </div>
             
-             <div class="container" id="navbar-container">
-                <nav class="navbar navbar-default" style="background-color: ">
-                    <ul class="nav navbar-nav">
-                        <li><a href="approve-accounts.jsp">Approve User Accounts</a></li>
-                        <li><a href="manage-users.jsp">Manage users</a></li>
-                        <li><a href="user-transaction.jsp">Transaction History</a></li>
-                        <li><a href="logout.jsp">Logout</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <%@ include file="nav.html" %>
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="approve-accounts.jsp">All Users</a></li>
                 <li role="presentation"><a href="pendingclients.jsp">Clients</a></li>
                 <li role="presentation"><a href="pending-sp.jsp">Service Providers</a></li>
-             </ul>
-            
-            <p>Select a tab to approve or reject users</p>
+            </ul>
             <table class="table table-hover">
             <tr>
                 <th>Username</th>
@@ -71,7 +60,7 @@
                         out.println("<td>" + res.getString("lastname") + "<td>");
                         out.println("<td>" + res.getString("email") + "<td>");
                         out.println("<td>" + res.getString("type") + "<td>");
-                        out.println("<td>" + res.getString("status") + "<td>");
+                        out.println("<td>" + res.getString("status").toUpperCase() + "<td>");
                         out.println("<td><form action = 'approve-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
                                 + res.getString("username") + "><input type = 'submit' value = 'Approve' class='btn btn-success'></form></td>");
                         out.println("<td><form action = 'reject-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "

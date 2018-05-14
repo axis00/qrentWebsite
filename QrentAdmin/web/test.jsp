@@ -6,9 +6,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            session.invalidate();
-            response.sendRedirect("index.jsp");
-        %>
+        <jsp:include page="homepage.jsp"/>
     </body>
 </html>

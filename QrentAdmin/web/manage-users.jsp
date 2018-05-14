@@ -17,14 +17,14 @@
             <div class='page-header'>
                 <h1>Manage Users</h1>
             </div>
+            
+            <%@include file="nav.html" %>
             <ul class="nav nav-tabs">
                 <li role="presentation" class="active"><a href="manage-users.jsp">All Users</a></li>
                 <li role="presentation"><a href="approved-user.jsp">Active Users</a></li>
                 <li role="presentation"><a href="rejected-user.jsp">Rejected Users</a></li>
                 <li role="presentation"><a href="removed-user.jsp">Removed Users</a></li>
              </ul>
-            
-            <p>Select a tab to manage users</p>
             <table class="table table-hover">
             <tr>
                 <th>Username</th>
@@ -33,7 +33,6 @@
                 <th>Email</th>
                 <th>Type</th>
                 <th>Status</th>
-                <th></th>
             </tr>
             <%
                 Connection con;
@@ -43,21 +42,18 @@
 
                     response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status != 'pending'");
+                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status != 'pending' ORDER BY type");
 
                     ResultSet res = ps.executeQuery();
 
                     while (res.next()) {
-
                         out.println("<tr>");
                         out.println("<td>" + res.getString("username") + "</td>");
                         out.println("<td>" + res.getString("firstname") + "</td>");
                         out.println("<td>" + res.getString("lastname") + "</td>");
                         out.println("<td>" + res.getString("email") + "</td>");
                         out.println("<td>" + res.getString("type") + "</td>");
-                        out.println("<td>" + res.getString("status") + "</td>");
-                        out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Remove user' class='btn btn-warning'></form></td>");
+                        out.println("<td>" + res.getString("status").toUpperCase() + "</td>");
                         out.println("</tr>");
                     }
                     

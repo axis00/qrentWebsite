@@ -20,6 +20,8 @@
     <body>
         <h1>Transaction History</h1>
         
+        <%@ include file="nav.html" %>
+        
         <table class="table table-hover">
             <tr>
                 <th>Transaction Date</th>
@@ -41,14 +43,18 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName, itemno, itemRentPrice, paymentType, duration FROM (((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.reservationID) INNER JOIN customers ON customers.username = transaction.clientusername) INNER JOIN Item ON Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
+                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
+                                + " itemno, itemRentPrice, paymentType, duration FROM "
+                                + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
+                                + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
+                                + " Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
 
                         ResultSet res = ps.executeQuery();
                         
                         if (!res.next()){
                             out.println("<tr><td> There are no transactions available </td></tr>");
-                       
                         }else{
+                            res.previous();
                             while (res.next()) {
                                 out.println("<tr>");
                                 out.println("<td>" + res.getString("paymentdate") + "</td>");
@@ -56,9 +62,9 @@
                                 out.println("<td>" + res.getString("username") + "</td>");
                                 out.println("<td>" + res.getString("itemName") + "</td>");
                                 out.println("<td>" + res.getString("itemno") + "</td>");
-                                out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("<td>" + res.getString("itemRentPrice") + "</td>");
                                 out.println("<td>" + res.getString("paymentType") + "</td>");
+                                out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("</tr>");
                             }
                         }

@@ -15,18 +15,15 @@
             if(session.isNew()) {
                 response.sendRedirect("index.html");
             }
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         %>
         
             <div class="page-header">
                 <h1>Admin Homepage</h1>
             </div>
-            
-            gi
+        
             <p><big>Welcome <b><%out.println(session.getAttribute("user"));%></b>!</big></p>
-            <p>Current time: <%out.println(LocalDateTime.now().format(formatter));%></p>
-            <p>Your session id: <% out.println(session.getId());%></p>
-            
+        
+            <%@ include file="nav.html" %>
         </div>
             
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
