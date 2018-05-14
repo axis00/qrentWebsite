@@ -15,7 +15,9 @@
     <body>
         <div class="container">
             <div class='page-header'>
-                <h1>Manage Users</h1>
+                <div class='page-header'>
+                    <h1>Manage Users</h1>
+                </div>
                 
                 <%@ include file="nav.html" %>
                 
@@ -44,7 +46,7 @@
 
                                 response.setContentType("text/html");
 
-                                PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status = 'approved'");
+                                PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status = 'approved' ORDER BY type");
 
                                 ResultSet res = ps.executeQuery();
 

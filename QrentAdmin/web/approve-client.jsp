@@ -3,6 +3,9 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
+<%@ page import="java.io.*,java.util.*,javax.mail.*"%>
+<%@ page import="javax.mail.internet.*,javax.activation.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -33,7 +33,6 @@
                 <th>Email</th>
                 <th>Type</th>
                 <th>Status</th>
-                <th>Action</th>
             </tr>
             <%
                 Connection con;
@@ -43,7 +42,7 @@
 
                     response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status != 'pending'");
+                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE type != 'Super Admin' AND status != 'pending' ORDER BY type");
 
                     ResultSet res = ps.executeQuery();
 
@@ -55,8 +54,6 @@
                         out.println("<td>" + res.getString("email") + "</td>");
                         out.println("<td>" + res.getString("type") + "</td>");
                         out.println("<td>" + res.getString("status").toUpperCase() + "</td>");
-                        out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Remove User' class='btn btn-warning'></form></td>");
                         out.println("</tr>");
                     }
                     
