@@ -34,7 +34,7 @@
                %>
             
             <div class="pricing-header">
-            <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("user"));%></b>!</h1>
+            <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("username"));%></b>!</h1>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
