@@ -15,6 +15,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
         <title>Register New Admin User</title>
     </head>
     <body>
@@ -33,36 +34,20 @@
                 response.setContentType("text/html");
 
                 String username = request.getParameter("username");
-                String password = request.getParameter("password");
-                String firstname = request.getParameter("firstname");
-                String lastname = request.getParameter("lastname");
-                String email = request.getParameter("email");
                 
                 PreparedStatement validate = con.prepareStatement("SELECT USERNAME FROM users where username=?");
                 validate.setString(1,username);
                 ResultSet val = validate.executeQuery();
                 
-                if(val.next()){
-                    response.sendRedirect("register-page.jsp");
-                } else {
-                    try {
-                        PreparedStatement ps = con.prepareStatement("INSERT INTO `users` (`username`, `password`, `type`, `firstname`, `lastname`, `email`, `status`, `registrationdate`) VALUES (?,?,?,?,?,?,?,?)");
-                        ps.setString(1, username);
-                        ps.setString(2, password);
-                        ps.setString(3, "Admin");
-                        ps.setString(4, firstname);
-                        ps.setString(5, lastname);
-                        ps.setString(6, email);
-                        ps.setString(7, "approved");
-                        ps.setString(8, LocalDateTime.now().format(formatter));
                 
-                        ps.execute();
-                            
-                        response.sendRedirect("superhomepage.jsp"); 
-                    } catch (SQLException ex){
-                        out.println(ex);
-                    }
+                if(val.next()){
+                    out.println("<font color=red>");
+                    out.println("Username invalid.");
+                    out.println("</font>");
+                } else {
+                    out.print("OK");
                 }
+                
             } catch (SQLException ex) {
                 out.println(ex);
             }
