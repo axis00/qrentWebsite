@@ -17,7 +17,7 @@
                 response.sendRedirect("index.html");
         %>
             <div class="page-header">
-                <h1>Super Admin Home Page</h1>
+                <h1>Admin Home Page</h1>
             </div>
             
             <div class="container" id="navbar-container">
