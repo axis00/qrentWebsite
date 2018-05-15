@@ -31,7 +31,7 @@
 
 <?php
         
-        require "../../connectTodb.php";
+        require "../php/connectToDb.php";
 
         if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['addressNo']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];

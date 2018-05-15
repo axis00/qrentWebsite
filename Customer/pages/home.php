@@ -1,6 +1,6 @@
 <?php
         
-        require "../../connectTodb.php";
+        require "../php/connectToDb.php";
 ?>
 
 <!DOCTYPE HTML>
