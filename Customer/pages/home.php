@@ -1,7 +1,6 @@
 <?php
         
         require "../../connectTodb.php";
-        require "../php/session.php"
 ?>
 
 <!DOCTYPE HTML>
@@ -22,9 +21,6 @@
             </div>
             <div id="user" class="nav-element">
                 <a href="profile.php">
-                    <?php
-                    echo "$current_session";
-                    ?>
                 </a>
                 <div class="nav-element" id="logout">
                     <a href="../php/logout.php"><input class="search-button" type="button" value="Logout" id="logout-button"></a>
@@ -41,8 +37,60 @@
     <div class="#sidenav">
     </div>
     <div class="content">
-        <php 
-    </div>
+        <?php 
+            require "../../connectToDb.php";
+            $query = "SELECT itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
+        
+            $result = mysqli_query($conn, $query);
+            
+            
+            $count = mysqli_num_rows($result);
+        
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+            
+            
+                echo "<table class='content-container'>";
+                echo "<tr>
+                        <th>Item name</th>
+                        <th>Item Description</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Original Price</th>
+                        <th>Condition</th>
+                    </tr>";
+        
+                while($row = mysqli_fetch_array($result)){
+                $name = $row['itemName'];
+                $desc = $row['itemDescription'];
+                $brand = $row['itemBrand'];
+                $price = $row['itemRentPrice'];
+                $ogprice = $row['itemOrigPrice'];
+                $condition = $row['itemCondition'];
+                    
+                echo "<tr>
+                        <td>$name</td>
+                      </tr>
+                      <tr>
+                        <td>$desc</td>
+                      </tr>
+                      <tr>
+                        <td>$brand</td>
+                      </tr>
+                      <tr>
+                        <td>$price</td>
+                      </tr>
+                      <tr>
+                        <td>$ogprice</td>
+                      </tr>
+                      <tr>
+                        <td>$condition</td>
+                    </tr>"; 
+        
+                echo "</table>";
+            }
+            
+            ?>
+        </div>
 
     </body>
 </html>
