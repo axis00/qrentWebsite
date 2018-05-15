@@ -82,10 +82,10 @@
                         response.setContentType("text/html");
 
                         PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
-                                + " itemno, itemRentPrice, paymentType, duration FROM "
+                                + " Reservation.itemno, itemRentPrice, paymentType, duration FROM "
                                 + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
                                 + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
-                                + " Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
+                                + " Item.itemno = Reservation.itemno)ORDER BY paymentdate ASC");
 
                         ResultSet res = ps.executeQuery();
 
