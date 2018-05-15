@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <title>Qrent</title>
     </head>
 
@@ -79,7 +80,7 @@
 //                    </tr>
 //                    
 //                </table>
-                    echo '<div class="row">';
+                    echo '<div class="card-deck">';
                       echo '<div class="col-sm-6 col-md-4">';
                         echo '<div class="thumbnail">';
                             while($r=mysqli_fetch_assoc($imageq)){
@@ -90,7 +91,7 @@
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
-                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
+                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a></p>';
                           echo "</div>
                         </div>
                       </div>
