@@ -7,6 +7,16 @@
     width: 30%;
 }
 
+#nav-logo{
+    width: 10vh;
+    margin: auto;
+}
+
+#navbar-container{
+    background-color: #37888E;
+    border-radius: 20px;
+}
+
 .jumbotron {
     margin: auto;
     position: relative;
