@@ -17,8 +17,8 @@
     <body id="body">
         <div class="container">
         <%
-            if(session == null || !request.isRequestedSessionIdValid()) {
-                response.sendRedirect("index.html");
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
             }
         %>
             <div class="row hidden-xs topper" id="top-nav-container">

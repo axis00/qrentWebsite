@@ -18,6 +18,7 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     </head>
     <body class="text-center" id="body">
+        
             <form class="form-signin" method="post" action="login.jsp" id="formblock">
                 <img src="./qrent-logo.png" id="login-logo"/>
                 <h1 class="h3 mb-3 font-weight-normal">Login</h1>

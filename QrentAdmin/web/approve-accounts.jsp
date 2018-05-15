@@ -15,6 +15,11 @@
         <title>Approve Pending Users</title>
     </head>
     <body id="body">
+        <%
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <div class="container">
             <div class="row hidden-xs topper" id="top-nav-container">
                 <div class="cols-xs-7 col-sm-7">
@@ -24,15 +29,15 @@
                     <h1>Approve Pending Users</h1>
                 </div>
             </div>
-            
+
             <%
-               if (session.getAttribute("username") == "super"){ %>
-                   <%@ include file="supernav.html"%>
-               <%}else {%>
-                   <%@include file="nav.html"%>
-                <%}
-               %>
-            
+                if (session.getAttribute("username") == "super") { %>
+            <%@ include file="supernav.html"%>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}
+            %>
+
             <nav class="navbar bg-faded">
                 <div class="navbar-collapse justify-content-md-center">
                     <ul class="navbar nav">
@@ -62,37 +67,37 @@
                         <th></th>
                     </tr>
                 </thead>
-            <%
-                Connection con;
-                try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+                <%
+                    Connection con;
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
 
-                    response.setContentType("text/html");
+                        response.setContentType("text/html");
 
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'pending'");
+                        PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'pending'");
 
-                    ResultSet res = ps.executeQuery();
+                        ResultSet res = ps.executeQuery();
 
-                    while (res.next()) {
-                        out.println("<tr scope='row' class='row-hover'>");
-                        out.println("<td>" + res.getString("username") + "<td>");
-                        out.println("<td>" + res.getString("firstname") + "<td>");
-                        out.println("<td>" + res.getString("lastname") + "<td>");
-                        out.println("<td>" + res.getString("email") + "<td>");
-                        out.println("<td>" + res.getString("type") + "<td>");
-                        out.println("<td>" + res.getString("status").toUpperCase() + "<td>");
-                        out.println("<td><form action = 'approve-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Approve' class='btn btn-success' id='btn-approve'></form></td>");
-                        out.println("<td><form action = 'reject-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                + res.getString("username") + "><input type = 'submit' value = 'Reject' class='btn btn-danger' id='btn-reject'></form></td>");
-                        out.println("</tr>");
+                        while (res.next()) {
+                            out.println("<tr scope='row' class='row-hover'>");
+                            out.println("<td>" + res.getString("username") + "<td>");
+                            out.println("<td>" + res.getString("firstname") + "<td>");
+                            out.println("<td>" + res.getString("lastname") + "<td>");
+                            out.println("<td>" + res.getString("email") + "<td>");
+                            out.println("<td>" + res.getString("type") + "<td>");
+                            out.println("<td>" + res.getString("status").toUpperCase() + "<td>");
+                            out.println("<td><form action = 'approve-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                    + res.getString("username") + "><input type = 'submit' value = 'Approve' class='btn btn-success' id='btn-approve'></form></td>");
+                            out.println("<td><form action = 'reject-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                    + res.getString("username") + "><input type = 'submit' value = 'Reject' class='btn btn-danger' id='btn-reject'></form></td>");
+                            out.println("</tr>");
+                        }
+                    } catch (SQLException ex) {
+                        out.println(ex);
                     }
-                } catch (SQLException ex) {
-                    out.println(ex);
-                }
-            %>
-        </table>
+                %>
+            </table>
         </div>
     </body>
 </html>

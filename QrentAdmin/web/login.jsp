@@ -13,6 +13,11 @@
     </head>
     <body>
         <%
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        <%
             Connection con;
             try {
                 Class.forName("com.mysql.jdbc.Driver");

@@ -14,6 +14,11 @@
         
     </head>
     <body id="body">
+        <%
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
         <div class="container">
         <div class="row hidden-xs topper" id="top-nav-container">
                 <div class="cols-xs-7 col-sm-7">

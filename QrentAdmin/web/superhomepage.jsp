@@ -13,8 +13,9 @@
     <body style="background-color:#f7ebec">
         <div class='container'>
         <%
-            if(session.isNew())
-                response.sendRedirect("index.html");
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
+            }
         %>
             <div class="page-header">
                 <h1>Admin Home Page</h1>

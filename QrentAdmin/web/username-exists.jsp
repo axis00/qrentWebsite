@@ -16,6 +16,11 @@
     </head>
     <body>
         <%
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
+            }
+        %>
+        <%
             if(session.isNew())
                 response.sendRedirect("index.html");
             

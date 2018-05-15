@@ -11,8 +11,8 @@
     </head>
     <body style="background-color:#f7ebec">
         <%
-            if (session.isNew()) {
-                response.sendRedirect("index.html");
+            if (session.isNew() || session.getAttribute("name") == null) {
+                response.sendRedirect("index.jsp");
             }
         %>
         <p>Session id = <% out.println(session.getId());%></p>
