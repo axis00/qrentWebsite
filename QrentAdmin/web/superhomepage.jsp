@@ -13,7 +13,7 @@
     <body style="background-color:#f7ebec">
         <div class='container'>
         <%
-            if (session.isNew() || session.getAttribute("name") == null) {
+            if (session.getAttribute("username") == null) {
                 response.sendRedirect("index.jsp");
             }
         %>

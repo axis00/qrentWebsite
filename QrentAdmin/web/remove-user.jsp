@@ -14,7 +14,7 @@
     </head>
     <body>
         <%
-            if (session.isNew() || session.getAttribute("name") == null) {
+            if (session.getAttribute("username") == null) {
                 response.sendRedirect("index.jsp");
             }
         %>

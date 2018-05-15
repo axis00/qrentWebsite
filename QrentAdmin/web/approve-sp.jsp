@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <title>JSP Page</title>
     </head>
     <body>
@@ -19,15 +19,17 @@
                 con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
 
                 response.setContentType("text/html");
-                
+
                 String username = request.getParameter("username");
                 PreparedStatement ps = con.prepareStatement("UPDATE users SET status='approved' WHERE username=?");
                 ps.setString(1, username);
-                
+
                 ps.executeUpdate();
-       
-                response.sendRedirect("pending-sp.jsp");
-                
+                if (session.getAttribute("username") == null) {
+                    response.sendRedirect("index.jsp");
+                } else {
+                    response.sendRedirect("pending-sp.jsp");
+                }
             } catch (SQLException ex) {
                 out.println(ex);
             }
