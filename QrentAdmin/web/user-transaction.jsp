@@ -100,9 +100,9 @@
                                 out.println("<td>" + res.getString("username") + "</td>");
                                 out.println("<td>" + res.getString("itemName") + "</td>");
                                 out.println("<td>" + res.getString("itemno") + "</td>");
+                                out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("<td>" + res.getString("itemRentPrice") + "</td>");
                                 out.println("<td>" + res.getString("paymentType") + "</td>");
-                                out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("</tr>");
                             }
                         }
