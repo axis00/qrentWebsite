@@ -30,14 +30,12 @@
                 </div>
             </div>
 
-            <%
-                if (session.getAttribute("username") == "super") { %>
-            <%@ include file="supernav.html"%>
-            <%} else {%>
-            <%@include file="nav.html"%>
-            <%}
-            %>
-
+           <% if(session.getAttribute("username").equals("super")) {%>
+           <%@include file="supernav.html"%>
+           <%}else{%>
+           <%@include file="nav.html"%>
+           <%}%>
+              
             <nav class="navbar bg-faded">
                 <div class="navbar-collapse justify-content-md-center">
                     <ul class="navbar nav">

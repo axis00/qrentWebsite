@@ -52,74 +52,71 @@
                     <h1>Manage Users</h1>
                 </div>
             </div>
-            
-            <%
-               if (session.getAttribute("username") != "super"){ %>
-                   <%@ include file="nav.html"%>
-               <%}else {%>
-                   <%@include file="supernav.html"%>
-                <%}
-               %>
-            
+
+            <% if (session.getAttribute("username").equals("super")) {%>
+            <%@include file="supernav.html"%>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}%>
             <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search transaction no..." class="search search-control">
             <table class="table" id="transaction">
                 <thead>
-                <tr>
-                    <th>Transaction Date</th>
-                    <th>Transaction No.</th>
-                    <th>Username</th>
-                    <th>Rented Item</th>
-                    <th>Item No.</th>
-                    <th>Rent Duration (Days)</th>
-                    <th>Price</th>
-                    <th>Mode of payment</th>
-                    <th></th>
-                </tr>
+                    <tr>
+                        <th>Transaction Date</th>
+                        <th>Transaction No.</th>
+                        <th>Username</th>
+                        <th>Rented Item</th>
+                        <th>Item No.</th>
+                        <th>Rent Duration (Days)</th>
+                        <th>Price</th>
+                        <th>Mode of payment</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <%
                     Connection con;
                     try {
-                            Class.forName("com.mysql.jdbc.Driver");
-                            con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
 
-                            response.setContentType("text/html");
+                        response.setContentType("text/html");
 
-                            PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
-                                    + " itemno, itemRentPrice, paymentType, duration FROM "
-                                    + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
-                                    + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
-                                    + " Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
+                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
+                                + " itemno, itemRentPrice, paymentType, duration FROM "
+                                + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
+                                + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
+                                + " Item.itemno = Reservation.itemID)ORDER BY paymentdate ASC");
 
-                            ResultSet res = ps.executeQuery();
+                        ResultSet res = ps.executeQuery();
 
-                            if (!res.next()){
-                                out.println("<tr><td> There are no transactions available </td></tr>");
-                            }else{
-                                res.previous();
-                                while (res.next()) {
-                                    out.println("<tr scope='row' class='row-hover'>");
-                                    out.println("<td>" + res.getString("paymentdate") + "</td>");
-                                    out.println("<td>" + res.getString("paymentid") + "</td>");
-                                    out.println("<td>" + res.getString("username") + "</td>");
-                                    out.println("<td>" + res.getString("itemName") + "</td>");
-                                    out.println("<td>" + res.getString("itemno") + "</td>");
-                                    out.println("<td>" + res.getString("itemRentPrice") + "</td>");
-                                    out.println("<td>" + res.getString("paymentType") + "</td>");
-                                    out.println("<td>" + res.getString("duration") + "</td>");
-                                    out.println("</tr>");
-                                }
+                        if (!res.next()) {
+                            out.println("<tr><td> There are no transactions available </td></tr>");
+                        } else {
+                            res.previous();
+                            while (res.next()) {
+                                out.println("<tr scope='row' class='row-hover'>");
+                                out.println("<td>" + res.getString("paymentdate") + "</td>");
+                                out.println("<td>" + res.getString("paymentid") + "</td>");
+                                out.println("<td>" + res.getString("username") + "</td>");
+                                out.println("<td>" + res.getString("itemName") + "</td>");
+                                out.println("<td>" + res.getString("itemno") + "</td>");
+                                out.println("<td>" + res.getString("itemRentPrice") + "</td>");
+                                out.println("<td>" + res.getString("paymentType") + "</td>");
+                                out.println("<td>" + res.getString("duration") + "</td>");
+                                out.println("</tr>");
                             }
-                        } catch (SQLException ex) {
-                            out.println(ex);
                         }
+                    } catch (SQLException ex) {
+                        out.println(ex);
+                    }
                 %>
             </table>
         </div>
-        
+
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        
+
     </body>
 </html>

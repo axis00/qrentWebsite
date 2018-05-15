@@ -21,8 +21,6 @@
             }
         %>
         <%
-            if(session.isNew())
-                response.sendRedirect("index.html");
             
             
             Connection con;

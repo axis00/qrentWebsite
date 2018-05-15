@@ -30,13 +30,11 @@
                 </div>
             </div>
 
-            <%
-                if (session.getAttribute("username") != "super") { %>
-            <%@ include file="nav.html"%>
-            <%} else {%>
-            <%@ include file="supernav.html"%>
-            <%}
-            %>
+           <% if(session.getAttribute("username").equals("super")) {%>
+           <%@include file="supernav.html"%>
+           <%}else{%>
+           <%@include file="nav.html"%>
+           <%}%>
 
             <div class="pricing-header">
 

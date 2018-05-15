@@ -30,13 +30,11 @@
                     <h1>Approve Pending Users</h1>
                 </div>
             </div>
-            <%
-                if (session.getAttribute("username") != "super") { %>
-            <%@ include file="nav.html"%>
-            <%} else {%>
+            <% if (session.getAttribute("username").equals("super")) {%>
             <%@include file="supernav.html"%>
-            <%}
-            %>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}%>
 
             <nav class="navbar bg-faded">
                 <div class="navbar-collapse justify-content-md-center">
