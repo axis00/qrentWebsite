@@ -23,12 +23,7 @@
             </div>
             <div class="nav-container">
                 <?php include 'nav.html';?>
-                <div id="search">
-                    <form action="/action_page.php">
-                        <input type="text" placeholder="Search.." name="search">
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
+                
             </div>
                 <?php 
             require "../../connectToDb.php";
