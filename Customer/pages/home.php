@@ -3,41 +3,34 @@
         require "../php/connectToDb.php";
 ?>
 
-<!DOCTYPE HTML>
-<html>
-    
+    <!DOCTYPE HTML>
+    <html>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="../styles/style.css">
         <title>Qrent</title>
     </head>
-    
-    <body>
-        <div class="navigation-bar">
-            <div class="nav-element">
-                <a href="home.php"><img  src="../images/qrent-logo.png"></a>
-            </div>
-            <div id="user" class="nav-element">
-                <a href="profile.php">
-                </a>
-                <div class="nav-element" id="logout">
-                    <a href="../php/logout.php"><input class="search-button" type="button" value="Logout" id="logout-button"></a>
+
+    <body id="body">
+        <div class="container">
+            <div class="row hidden-xs topper">
+                <div class="cols-xs-7 col-sm-7">
+                    <a href="home.php"><img  src="../images/qrent-logo.png" class="img-responsive" id="nav-logo" class="img-responsive"></a>
                 </div>
             </div>
-            <div id="search">
-                <form action="/action_page.php">
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit">Submit</button>
-                </form>
+            <div class="nav-container">
+                <?php include 'nav.html';?>
+                <div id="search">
+                    <form action="/action_page.php">
+                        <input type="text" placeholder="Search.." name="search">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
-
-        </div>
-    <div class="#sidenav">
-    </div>
-    <div class="content">
-        <?php 
+                <?php 
             require "../../connectToDb.php";
             $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
             
@@ -96,21 +89,21 @@
 //                    
 //                </table>";
                     echo '<div class="row">';
-                      echo '<div class="col-sm-6 col-md-4">';
-                        echo '<div class="thumbnail">';
-                          echo"<img src='$imagefile'>";
-                          echo'<div class="caption">';
-                            echo"<h3>$name</h3><br/>";
-                            echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
-                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
-                          echo "</div>
+                    echo '<div class="col-sm-6 col-md-4">';
+                    echo '<div class="thumbnail">';
+                    echo"<img src='$imagefile'>";
+                    echo'<div class="caption">';
+                    echo"<h3>$name</h3><br/>";
+                    echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
+                    echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
+                    echo "</div>
                         </div>
                       </div>
                     </div>";
                 }
             ?>
-        
-<!--
+
+                <!--
             <div class="row">
               <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
@@ -125,6 +118,7 @@
             </div>
         </div>
 -->
-
+            </div>
     </body>
-</html>
+
+    </html>

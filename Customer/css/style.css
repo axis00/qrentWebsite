@@ -1,8 +1,18 @@
-body {
-	background-color: bisque;
+#body {
+	background-color: #F7EBEC;
     margin: 0;
-    overflow: hidden;
 }
+
+#nav-logo{
+    width: 10vh;
+    margin: 5px;
+}
+
+#navbar-container{
+    background-color: #37888E;
+    border-radius: 20px;
+}
+
 
 .search-bar {
     margin-left: 25%;
@@ -65,14 +75,6 @@ body {
 .content-register input {
     margin-top: 1.5vh;
     
-}
-
-.navigation-bar{
-    background-color: #37888E;
-    border: solid 2px #37888E;
-    display: inline-block;
-    padding-top: 2vh;
-    width: 100%;
 }
 
 .register-field input {
