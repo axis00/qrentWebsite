@@ -56,12 +56,8 @@
                 $ogprice = $row['itemOrigPrice'];
                 $condition = $row['itemCondition'];
                     
-                $imgquery = "SELECT imagefile FROM qrent.ItemImage where itemno='$itemno' BY 1";
+                $imgquery = "SELECT itemimageid FROM qrent.ItemImage where itemno='$itemno'";
                 $imageq = mysqli_query($conn, $imgquery);
-                    while($r=mysqli_fetch_assoc($imageq))
-                        {
-                            $imagefile = $r["imagefile"];
-                        } 
 //                echo "<br/>";    
 //                echo "<tr>
 //                        <td>$name</td>
@@ -84,6 +80,7 @@
 //                    
 //                </table>";
                     echo '<div class="row">';
+<<<<<<< HEAD
                     echo '<div class="col-sm-6 col-md-4">';
                     echo '<div class="thumbnail">';
                     echo"<img src='$imagefile'>";
@@ -92,6 +89,19 @@
                     echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
                     echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
                     echo "</div>
+=======
+                      echo '<div class="col-sm-6 col-md-4">';
+                        echo '<div class="thumbnail">';
+                            while($r=mysqli_fetch_assoc($imageq)){
+                                $imageLink = '/itemimage.php?img='.$r["itemimageid"];
+                                echo '<img src = '.$imageLink.'>';
+                            } 
+                          echo'<div class="caption">';
+                            echo"<h3>$name</h3><br/>";
+                            echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
+                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
+                          echo "</div>
+>>>>>>> 38efbe3213fdd4c1af9069db44d7954fb523e04b
                         </div>
                       </div>
                     </div>";
