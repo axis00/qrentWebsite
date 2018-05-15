@@ -68,12 +68,8 @@
                 $ogprice = $row['itemOrigPrice'];
                 $condition = $row['itemCondition'];
                     
-                $imgquery = "SELECT imagefile FROM qrent.ItemImage where itemno='$itemno' BY 1";
+                $imgquery = "SELECT itemimageid FROM qrent.ItemImage where itemno='$itemno'";
                 $imageq = mysqli_query($conn, $imgquery);
-                    while($r=mysqli_fetch_assoc($imageq))
-                        {
-                            $imagefile = $r["imagefile"];
-                        } 
 //                echo "<br/>";    
 //                echo "<tr>
 //                        <td>$name</td>
@@ -98,7 +94,10 @@
                     echo '<div class="row">';
                       echo '<div class="col-sm-6 col-md-4">';
                         echo '<div class="thumbnail">';
-                          echo"<img src='$imagefile'>";
+                            while($r=mysqli_fetch_assoc($imageq)){
+                                $imageLink = '/itemimage.php?img='.$r["itemimageid"];
+                                echo '<img src = '.$imageLink.'>';
+                            } 
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
