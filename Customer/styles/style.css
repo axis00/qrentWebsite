@@ -1,4 +1,4 @@
-#body {
+body {
 	background-color: #F7EBEC;
     margin: 0;
 }
@@ -14,7 +14,6 @@
 
 #navbar-container{
     background-color: #37888E;
-    border-radius: 20px;
 }
 
 .jumbotron {
@@ -36,14 +35,6 @@
     font-size: 30px;
     background-color: white;
     padding-right: 3vh;
-}
-
-.navigation-bar {
-    position: fixed;
-    background-color: #37888e;
-    height: auto;
-    width: 100%;
-    padding: 5px;
 }
 
 .search-button:hover {
@@ -124,3 +115,21 @@
     width: 90%;
     margin-left: 5%;
 }
+
+
+/*Nav bar*/
+.nav-container {
+    border: none;
+    margin-top: 20px;
+}
+
+/*Table*/
+
+.table-striped {
+    width: 90%;
+}
+
+.container {
+    margin-top: 20px;  
+}
+
