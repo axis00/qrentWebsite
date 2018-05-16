@@ -37,6 +37,16 @@
         
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
             
+            
+//                echo "<table class='content-container'>";
+//                echo "<tr>
+//                        <th>Item name</th>
+//                        <th>Item Description</th>
+//                        <th>Brand</th>
+//                        <th>Price</th>
+//                        <th>Original Price</th>
+//                        <th>Condition</th>
+//                    </tr>";
         
                 while($row = mysqli_fetch_array($result)){
                 $itemno = $row['itemno'];
@@ -49,14 +59,6 @@
                     
                 $imgquery = "SELECT itemimageid FROM qrent.ItemImage where itemno='$itemno'";
                 $imageq = mysqli_query($conn, $imgquery);
-<<<<<<< HEAD
-                    while($r=mysqli_fetch_assoc($imageq))
-                        {
-                            $imagefile = $r["imagefile"];
-                        } 
-
-                    echo '<div class="row">';
-=======
 //                echo "<br/>";    
 //                echo "<tr>
 //                        <td>$name</td>
