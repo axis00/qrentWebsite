@@ -2,6 +2,7 @@
         
         require "../php/session.php";
 ?>
+<<<<<<< HEAD
 <script>
 function change();
 {
@@ -60,3 +61,6 @@ document.getElementById("myButton1").value="Reserved";
                  }
         ?>
     </table>
+        </div>
+        </body>
+</html>
