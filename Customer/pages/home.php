@@ -1,12 +1,6 @@
 <?php
         require "../php/session.php";
 ?>
-    <script>
-        function change(); {
-            document.getElementById("myButton1").value = "Reserved";
-        }
-
-    </script>
     <!DOCTYPE HTML>
     <html>
 
