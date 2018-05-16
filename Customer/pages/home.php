@@ -47,8 +47,10 @@
             if($results-> num_rows > 0){
                 $x = 1;
                 while($row = mysqli_fetch_array($results)){
-                    echo "<form action='sample.php' method='POST'><tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td><td><button type='submit' class='btn btn-secondary' name='item' value='".$row["itemName"]."'>Reserve</button>
-                    </form>";
+
+                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
+                    echo'<form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><input type="submit" class="btn btn-primary" role="button" name="reserve" value="reserve"></form>';
+
                 }
             }
                  
@@ -57,7 +59,7 @@
             
                 <?php 
             require "../php/connectToDb.php";
-            $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
+            $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item";
             
             $result = mysqli_query($conn, $query);
             $count = mysqli_num_rows($result);
@@ -118,7 +120,7 @@
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
-                            echo'<form action="../php/reserve.php" method="POST"><p><input type="submit" class="btn btn-primary" role="button" name="reserve" value="reserve"></form>';
+                            echo'<form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><input type="submit" class="btn btn-primary" role="button" name="reserve" value="reserve"></form>';
                           echo "</div>
                           </div>
                         </div>
@@ -127,22 +129,38 @@
                 }
             ?>
 
-                <!--
-            <div class="row">
-              <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
-                  <img src="..." alt="...">
-                  <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>...</p>
-                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                  </div>
-                </div>
-              </div>
             </div>
-        </div>
--->
-            </div>
+        
+                 <table class="table table-borderless">
+        <tr >
+            <th >Item No</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Owner</th>
+            <th>Rentprice</th>
+            <th>Condition</th>
+            <th>Reserve</th>
+        </tr>
+        
+        <?php
+            require "../php/connectToDb.php";
+            
+            $sql = "SELECT * FROM Item";
+            $results = mysqli_query($conn, $sql);
+            if($results-> num_rows > 0){
+                $x = 1;
+                while($row = mysqli_fetch_array($results)){
+
+                    echo "<form action='sample.php' method='POST'><tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td><td><button type='submit' class='btn btn-secondary' name='item' value='".$row["itemName"]."'>Reserve</button>
+                    </form>";
+
+
+                }
+            }
+                 
+        ?>
+    </table>
     </body>
 
     </html>
