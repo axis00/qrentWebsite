@@ -13,9 +13,12 @@
         <title>Qrent</title>
     </head>
 
-    <body>
+    <body style="background-color: #F7EBEC;">
         <div class="container">
-            <h1 class="display-4 text-left">Homepage</h1>
+            <div class="d-inline">
+                <img class="d-inline" src="../images/qrent-logo.png" width="100px" height="100px"/>
+                <h1 class="d-inline display-4 text-left">Homepage</h1>
+            </div>
             <div class="nav-container">
                 <?php include 'nav.html';?>
             </div>
