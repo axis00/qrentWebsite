@@ -28,14 +28,15 @@
             </div>
             
              <table class="table table-borderless">
-        <tr>
-            <th>Item No</th>
+        <tr >
+            <th >Item No</th>
             <th>Name</th>
             <th>Description</th>
             <th>Brand</th>
             <th>Owner</th>
             <th>Rentprice</th>
-            <th na>Condition</th>
+            <th>Condition</th>
+            <th>Reserve</th>
         </tr>
         
         <?php
@@ -44,11 +45,13 @@
             $sql = "SELECT * FROM Item";
             $results = mysqli_query($conn, $sql);
             if($results-> num_rows > 0){
-                
+                $x = 1;
                 while($row = mysqli_fetch_array($results)){
-                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
+                    echo "<form action='sample.php' method='POST'><tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td><td><button type='submit' class='btn btn-secondary' name='item' value='".$row["itemName"]."'>Reserve</button>
+                    </form>";
                 }
             }
+                 
         ?>
     </table>
             
