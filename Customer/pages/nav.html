@@ -38,7 +38,8 @@ and open the template in the editor.
             </div>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link text-left" href="logout.jsp">Logout</a></li>
+                <li><a class="nav-link text-left"><?php echo "$current_session";?></a></li>
+                <li><a class="nav-link text-left" href="../php/logout.php">Logout</a></li>
             </ul>
         </nav>
 

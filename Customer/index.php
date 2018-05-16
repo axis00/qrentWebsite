@@ -7,13 +7,15 @@
         alert("User not registered");
     }
 
-    function registrationSuccess(){
-        window.location.href = "./pages/home.php"
+    function loginSuccess(){
+        window.location.href = "../pages/home.php"
     }
 </script>
 
 <?php
     require "./php/connectToDb.php";
+    session_start();
+
     if(isset($_POST['username']) && isset($_POST['password'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
@@ -26,7 +28,7 @@
         if($count == 1){
                 if(password_verify($password, $passwordVerify)){
                 $_SESSION['user'] = $username;
-                echo "<script>registrationSuccess()</script>";
+                echo "<script>loginSuccess()</script>";
                 }else{
                 echo "<script>invalidPassword()</script>";
                 }

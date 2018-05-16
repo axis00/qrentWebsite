@@ -1,6 +1,6 @@
 <?php
         
-        require "../php/connectToDb.php";
+        require "../php/session.php";
 ?>
 
     <!DOCTYPE HTML>
@@ -31,10 +31,7 @@
             $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
             
             $result = mysqli_query($conn, $query);
-            
-            
             $count = mysqli_num_rows($result);
-        
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
             
             
@@ -87,12 +84,14 @@
                                 $imageLink = '/itemimage.php?img='.$r["itemimageid"];
                                 echo '<img src = '.$imageLink.'>';
                             } 
-                    echo'</div>';
+                   
+                            
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
                             echo'<p><a href=# class="btn btn-primary" role="button">Button</a></p>';
                           echo "</div>
+                          </div>
                         </div>
                       </div>
                     </div>";
