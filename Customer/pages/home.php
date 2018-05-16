@@ -91,7 +91,7 @@
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
-                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a></p>';
+                            echo'<form action="../php/reserve.php" method="POST"><p><input type="submit" class="btn btn-primary" role="button" name="reserve" value="reserve"></form>';
                           echo "</div>
                         </div>
                       </div>
