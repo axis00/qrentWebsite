@@ -22,12 +22,7 @@
                 <a href="home.php"><img  src="../images/qrent-logo.png" class="img-responsive" id="nav-logo" class="img-responsive"></a>
             </div>
         </div>
-        <div class="nav-container">
-            <?php include 'nav.html';?>
-        </div>
-    </div>
-    
-    <div>
+        <div></div>
         <table class="table table-borderless">
             <tr >
                 <th >Item No</th>
@@ -69,6 +64,10 @@
                      
             ?>
         </table>
+    </div>
+    
+    <div>
+        
     </div>
 </body>
 
