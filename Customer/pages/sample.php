@@ -40,11 +40,21 @@
             if($results-> num_rows > 0){
                 
                 while($row = mysqli_fetch_array($results)){
-                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
+                    $itemName = $row['itemName'];
+                    echo "<tr><td scope='row'>$itemName</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
                 }
-            }
+                
+            
         ?>
     </table>
+    
+    <?php
+                if(isset($_POST['item'])){
+                $itemName = $_POST['item'];
+                echo "<h1>$itemName</h1>";
+            }
+            }
+    ?>
 </body>
 
 <?php
