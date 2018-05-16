@@ -57,6 +57,7 @@
     <body>
         
         <div class="jumbotron">
+            <div class="container">
                 <form method="post">
                     <img src="images/qrent-logo.png"><br><br>
                     <div class="form-group">
@@ -65,9 +66,10 @@
                     </div>
 
                      <input type="submit" class="btn btn-primary" value="Login"><br><br>
-                    <p>Not yet registerd? <a href="pages/register.php">Register here.</a></p>
+                    <p>Not yet registered? <a href="pages/register.php">Register here.</a></p>
                 </form>
             </div>
-            
+        </div>
+        
     </body>
 </html>
