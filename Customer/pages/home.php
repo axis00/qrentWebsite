@@ -47,13 +47,13 @@
                 
                 while($row = mysqli_fetch_array($results)){
                     echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
-                    echo'<form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><input type="submit" class="btn btn-primary" role="button" name="reserve" value="reserve"></form>';
+                    echo'<td><form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><input type="submit" class="btn btn-primary" role="button" name="select" value="select"></form></td>';
                 }
             }
         ?>
     </table>
             
-                <?php 
+            <?php 
             require "../php/connectToDb.php";
             $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item";
             
