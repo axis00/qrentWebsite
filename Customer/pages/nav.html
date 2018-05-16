@@ -1,13 +1,12 @@
-<div id="">
-    <nav class="navbar navbar-expand-md" id="navbar-container">
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto navhover">
-                <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href=""></a></li>
-                <li class="nav-item"><a class="nav-link" href="m"></a></li>
-                <li class="nav-item"><a class="nav-link" href="">Transaction History</a></li>
-            </ul>
-            <!--<div id="search">
+<nav class="navbar navbar-expand-md fixed-top" id="navbar-container">
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto navhover">
+            <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href=""></a></li>
+            <li class="nav-item"><a class="nav-link" href="m"></a></li>
+            <li class="nav-item"><a class="nav-link" href="">Transaction History</a></li>
+        </ul>
+        <!--<div id="search">
                 <form action="/action_page.php" class="navbar-form">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search.." name="search">
@@ -17,16 +16,14 @@
                     </div>
                 </form>
             </div>-->
-        </div>
+    </div>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a class="nav-link text-left">
-                    <?php echo "$current_session";?>
-                </a>
-            </li>
-            <li><a class="nav-link text-left" href="../php/logout.php">Logout</a></li>
-        </ul>
-    </nav>
-
-</div>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a class="nav-link text-left">
+                <?php echo "$current_session";?>
+            </a>
+        </li>
+        <li><a class="nav-link text-left" href="../php/logout.php">Logout</a></li>
+    </ul>
+</nav>

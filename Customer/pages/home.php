@@ -1,8 +1,7 @@
+<!DOCTYPE HTML>
+<html>
 <?php
-        require "../php/session.php";
-?>
-    <!DOCTYPE HTML>
-    <html>
+    ?>
 
     <head>
         <meta charset="utf-8">
@@ -14,53 +13,15 @@
     </head>
 
     <body style="background-color: #F7EBEC;">
-        <div class="container">
-            <div class="d-inline">
-                <img class="d-inline" src="../images/qrent-logo.png" width="100px" height="100px"/>
-                <h1 class="d-inline display-4 text-left">Homepage</h1>
+        <div class="container mt-5">
+            <img src="../images/qrent-logo.png" width="200px" height="200px" style="margin:0 auto; float: 0;"/>
+            <div class="input-group mt-5">
+                <input type="text" class="form-control" placeholder="Search an item..." style="padding:15px;">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">Search</button>
+                </div>
             </div>
-            <div class="nav-container">
-                <?php include 'nav.html';?>
-            </div>
-            <table class="table table-striped">
-                <tr>
-                    <th>Item No</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Brand</th>
-                    <th>Owner</th>
-                    <th>Rentprice</th>
-                    <th>Condition</th>
-                    <th>Reserve</th>
-                </tr>
-
-                <?php
-                require "../php/connectToDb.php";
-                
-                $sql = "SELECT * FROM Item";
-                $results = mysqli_query($conn, $sql);
-                if($results-> num_rows > 0){
-                    $x = 1;
-                    while($row = mysqli_fetch_array($results)){
-                        echo "<tr>
-                            <td scope='row'>". $row["itemno"] . "</td>
-                            <td>". $row["itemName"] . "</td>
-                            <td>" . $row["itemDescription"] . "</td>
-                            <td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> 
-                            <td>" .$row["itemRentPrice"]. "</td>
-                            <td>" .$row["itemCondition"]. "</td>
-                            <td>
-                            <form action='../php/reserve.php' method='POST' class = 'reserveForm'>
-                                <input type = 'hidden' name = 'resId' value = ".$row["itemno"].">
-                                <input type='submit' class='btn btn-secondary' name='item' value='Reserve'>
-                            </form>
-                        </tr>";
-                    }
-                }
-                     
-            ?>
-            </table>
         </div>
     </body>
 
-    </html>
+</html>
