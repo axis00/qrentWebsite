@@ -124,3 +124,21 @@
     width: 90%;
     margin-left: 5%;
 }
+
+
+/*Nav bar*/
+.nav-container {
+    border: none;
+    margin-top: 20px;
+}
+
+/*Table*/
+
+.table-striped {
+    width: 90%;
+}
+
+.container {
+    margin-top: 20px;  
+}
+

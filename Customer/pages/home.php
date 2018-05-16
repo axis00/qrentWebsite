@@ -16,22 +16,17 @@
 </head>
 
 <body id="body">
-    <div class="container">
-        <div class="row hidden-xs topper">
-            <div class="cols-xs-7 col-sm-7">
-                <a href="home.php"><img  src="../images/qrent-logo.png" class="img-responsive" id="nav-logo" class="img-responsive"></a>
-            </div>
-        </div>
+
         <div class="nav-container">
             <?php include 'nav.html';?>
         </div>
-    </div>
     
     <div>
-        <table class="table table-borderless">
+         <div class="container">
+        <table class="table table-striped">
+           
             <tr >
-                <th >Item No</th>
-                <th>Name</th>
+                <th>Item</th>
                 <th>Description</th>
                 <th>Brand</th>
                 <th>Owner</th>
@@ -50,7 +45,6 @@
                     while($row = mysqli_fetch_array($results)){
 
                         echo "<tr>
-                            <td scope='row'>". $row["itemno"] . "</td>
                             <td>". $row["itemName"] . "</td>
                             <td>" . $row["itemDescription"] . "</td>
                             <td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> 
@@ -69,6 +63,8 @@
                      
             ?>
         </table>
+
+        </div>
     </div>
 </body>
 
