@@ -1,44 +1,33 @@
 <?php
         
-        require "../../connectTodb.php";
+        require "../php/connectToDb.php";
 ?>
 
-<!DOCTYPE HTML>
-<html>
-    
+    <!DOCTYPE HTML>
+    <html>
+
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
         <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <title>Qrent</title>
     </head>
-    
-    <body>
-        <div class="navigation-bar">
-            <div class="nav-element">
-                <a href="home.php"><img  src="../images/qrent-logo.png"></a>
-            </div>
-            <div id="user" class="nav-element">
-                <a href="profile.php">
-                </a>
-                <div class="nav-element" id="logout">
-                    <a href="../php/logout.php"><input class="search-button" type="button" value="Logout" id="logout-button"></a>
+
+    <body id="body">
+        <div class="container">
+            <div class="row hidden-xs topper">
+                <div class="cols-xs-7 col-sm-7">
+                    <a href="home.php"><img  src="../images/qrent-logo.png" class="img-responsive" id="nav-logo" class="img-responsive"></a>
                 </div>
             </div>
-            <div id="search">
-                <form action="/action_page.php">
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit">Submit</button>
-                </form>
+            <div class="nav-container">
+                <?php include 'nav.html';?>
+                
             </div>
-
-        </div>
-    <div class="#sidenav">
-    </div>
-    <div class="content">
-        <?php 
-            require "../../connectToDb.php";
+                <?php 
+            require "../php/connectToDb.php";
             $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
             
             $result = mysqli_query($conn, $query);
@@ -58,29 +47,57 @@
                 $ogprice = $row['itemOrigPrice'];
                 $condition = $row['itemCondition'];
                     
-                $imgquery = "SELECT imagefile FROM qrent.ItemImage where itemno='$itemno' BY 1";
+                $imgquery = "SELECT itemimageid FROM qrent.ItemImage where itemno='$itemno'";
                 $imageq = mysqli_query($conn, $imgquery);
+<<<<<<< HEAD
                     while($r=mysqli_fetch_assoc($imageq))
                         {
                             $imagefile = $r["imagefile"];
                         } 
 
                     echo '<div class="row">';
+=======
+//                echo "<br/>";    
+//                echo "<tr>
+//                        <td>$name</td>
+//                      </tr>
+//                      <tr>
+//                        <td>$desc</td>
+//                      </tr>
+//                      <tr>
+//                        <td>$brand</td>
+//                      </tr>
+//                      <tr>
+//                        <td>$price</td>
+//                      </tr>
+//                      <tr>
+//                        <td>$ogprice</td>
+//                      </tr>
+//                      <tr>
+//                        <td>$condition</td>
+//                    </tr>
+//                    
+//                </table>
+                    echo '<div class="card-deck">';
                       echo '<div class="col-sm-6 col-md-4">';
                         echo '<div class="thumbnail">';
-                          echo"<img src='$imagefile'>";
+                            while($r=mysqli_fetch_assoc($imageq)){
+                                $imageLink = '/itemimage.php?img='.$r["itemimageid"];
+                                echo '<img src = '.$imageLink.'>';
+                            } 
+                    echo'</div>';
                           echo'<div class="caption">';
                             echo"<h3>$name</h3><br/>";
                             echo"<p>$desc <br/> <b>$price</b> <br/> $ogprice <br/> $condition</p>";
-                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a> <a href=# class="btn btn-default" role="button">Button</a></p>';
+                            echo'<p><a href=# class="btn btn-primary" role="button">Button</a></p>';
                           echo "</div>
                         </div>
                       </div>
                     </div>";
                 }
             ?>
-        
-<!--
+
+                <!--
             <div class="row">
               <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
@@ -95,6 +112,7 @@
             </div>
         </div>
 -->
-
+            </div>
     </body>
-</html>
+
+    </html>

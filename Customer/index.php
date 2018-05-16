@@ -8,12 +8,12 @@
     }
 
     function registrationSuccess(){
-        window.location.href = "http://laboratory/pages/home.php"
+        window.location.href = "./pages/home.php"
     }
 </script>
 
 <?php
-    require "../connectToDb.php";
+    require "./php/connectToDb.php";
     if(isset($_POST['username']) && isset($_POST['password'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);
