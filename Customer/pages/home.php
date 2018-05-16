@@ -1,6 +1,12 @@
 <?php
         require "../php/session.php";
 ?>
+    <script>
+        function change(); {
+            document.getElementById("myButton1").value = "Reserved";
+        }
+
+    </script>
     <!DOCTYPE HTML>
     <html>
 
@@ -20,9 +26,9 @@
                 <?php include 'nav.html';?>
             </div>
             <table class="table table-striped">
-
                 <tr>
-                    <th>Item</th>
+                    <th>Item No</th>
+                    <th>Name</th>
                     <th>Description</th>
                     <th>Brand</th>
                     <th>Owner</th>
@@ -39,8 +45,8 @@
                 if($results-> num_rows > 0){
                     $x = 1;
                     while($row = mysqli_fetch_array($results)){
-
                         echo "<tr>
+                            <td scope='row'>". $row["itemno"] . "</td>
                             <td>". $row["itemName"] . "</td>
                             <td>" . $row["itemDescription"] . "</td>
                             <td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> 
@@ -52,18 +58,11 @@
                                 <input type='submit' class='btn btn-secondary' name='item' value='Reserve'>
                             </form>
                         </tr>";
-
-
                     }
                 }
                      
             ?>
             </table>
-
-        </div>
-
-        <div>
-
         </div>
     </body>
 
