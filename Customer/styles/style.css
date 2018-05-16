@@ -124,3 +124,22 @@
     width: 90%;
     margin-left: 5%;
 }
+
+#reserveFormCont{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    padding: 10rem;
+}
+
+#reserveFormCont .card{
+    position: static;
+    width: 40%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#reserveFormCont .card .form-control{
+    margin: 1rem 0;
+}

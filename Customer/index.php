@@ -16,6 +16,11 @@
     require "./php/connectToDb.php";
     session_start();
 
+    if(isset($_SESSION['user'])){
+        header('Location: /pages/home.php');
+        die();
+    }
+
     if(isset($_POST['username']) && isset($_POST['password'])){
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         $password = mysqli_real_escape_string($conn, $_POST['password']);

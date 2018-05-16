@@ -4,7 +4,7 @@
 
 	$_SESSION['user'];
 
-	if(isset($_POST['resId']) && isset($_SESSION['user'])){
+	if(isset($_POST['resId']) && isset($_POST['startdate']) && isset($_POST['duration']) && isset($_SESSION['user'])){
 
 		require "../php/connectToDb.php";
 
@@ -12,13 +12,18 @@
 
 		$itemno = $_POST['resId'];
 
-		$sql = "INSERT INTO Reservation (itemno, status, requestdate, enddate, duration, client) VALUES ($itemno, 'pending',CURDATE(), DATE_ADD(CURDATE(), INTERVAL 2 DAY), '2', '$client')";
+		$duration = $_POST['duration'];
+		$startdate = $_POST['startdate'];
 
-		if ($conn->query($sql)) {
-           echo "Item Reserved";
+		echo $startdate;
+
+		$sql = "INSERT INTO Reservation (itemno, status, requestdate, enddate, duration, client) VALUES ($itemno, 'pending',CURDATE(), DATE_ADD(CURDATE(), INTERVAL $duration DAY), '2', '$client')";
+
+		/*if ($conn->query($sql)) {
+           
        	} else {
        		echo "Error: " . $sql . "<br>" . $conn->error;
-       	}
+       	}*/
 
 	}
 
