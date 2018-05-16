@@ -21,7 +21,7 @@
         </div>
     </nav>
     
-    <table>
+    <table class="table table-borderless">
         <tr>
             <th>Item No</th>
             <th>Name</th>
@@ -29,7 +29,7 @@
             <th>Brand</th>
             <th>Owner</th>
             <th>Rentprice</th>
-            <th>Condition</th>
+            <th na>Condition</th>
         </tr>
         
         <?php
@@ -37,10 +37,10 @@
             
             $sql = "SELECT * FROM Item";
             $results = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_array($results);
             if($results-> num_rows > 0){
-                while(mysqli_fetch_assoc($results) > 0){
-                    echo "<tr><td>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
+                
+                while($row = mysqli_fetch_array($results)){
+                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
                 }
             }
         ?>

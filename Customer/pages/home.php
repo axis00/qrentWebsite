@@ -26,6 +26,32 @@
                 <?php include 'nav.html';?>
                 
             </div>
+            
+             <table class="table table-borderless">
+        <tr>
+            <th>Item No</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Brand</th>
+            <th>Owner</th>
+            <th>Rentprice</th>
+            <th na>Condition</th>
+        </tr>
+        
+        <?php
+            require "../php/connectToDb.php";
+            
+            $sql = "SELECT * FROM Item";
+            $results = mysqli_query($conn, $sql);
+            if($results-> num_rows > 0){
+                
+                while($row = mysqli_fetch_array($results)){
+                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
+                }
+            }
+        ?>
+    </table>
+            
                 <?php 
             require "../php/connectToDb.php";
             $query = "SELECT itemno, itemName, itemDescription, itemBrand, itemRentPrice, itemOrigPrice, itemCondition  FROM Item ORDER BY 1";
