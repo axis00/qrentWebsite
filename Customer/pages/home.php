@@ -2,7 +2,12 @@
         
         require "../php/session.php";
 ?>
-
+<script>
+function change();
+{
+document.getElementById("myButton1").value="Reserved";
+}
+</script>
     <!DOCTYPE HTML>
     <html>
 
@@ -41,15 +46,17 @@
         <?php
             require "../php/connectToDb.php";
             
-            $sql = "SELECT * FROM Item";
+            $sql = "SELECT * FROM Item WHERE retStatus='returned'";
             $results = mysqli_query($conn, $sql);
             if($results-> num_rows > 0){
                 
                 while($row = mysqli_fetch_array($results)){
                     echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["itemName"] . "</td><td>" . $row["itemDescription"] . "</td><td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> <td>" .$row["itemRentPrice"]. "</td><td>" .$row["itemCondition"]. "</td>" ;
-                    echo'<td><form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><input type="submit" class="btn btn-secondary" role="button" name="select" value="select"></form></td>';
+                    echo'<td><form action="../php/reserve.php" method="get"><input type="hidden" name="itemno" value="itemno"><a href="home.php"><input type="submit" class="btn btn-secondary" onclick="change()" id="reservebutton" role="button" name="reserve" value="reserve"></a></form></td>';
                 }
             }
+                 else{
+                     echo "Reserved!";
+                 }
         ?>
     </table>
-    ?>

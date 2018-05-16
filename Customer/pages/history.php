@@ -49,6 +49,9 @@
                     echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["status"] . "</td><td>" . $row["requestdate"] . "</td><td>" . $row["startdate"] . "</td><td>" .$row["enddate"]. "</td> <td>" .$row["duration"]. "</td>";
                 }
             }
+            else{
+                echo "You have no reservations";
+            }
                  
 //            echo "<center><h1>My Transactions</h1></center>";
 //            $sql = "SELECT * FROM Reservation WHERE client='$checkUser';";

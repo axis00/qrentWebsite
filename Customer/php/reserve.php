@@ -5,16 +5,8 @@
     //$checkUser
 
     mysqli_query($conn,"UPDATE Item set retStatus='loaned' WHERE itemno=$itemno");
-    mysqli_query($conn,"UPDATE Reservation set client='$checkUser' WHERE itemno=$itemno");
+    //mysqli_query($conn,"UPDATE Reservation set client='$checkUser' WHERE itemno=$itemno");
 
-    // $sql = "INSERT INTO Reservation (ReservationID, itemno, status, requestdate, enddate, duration, client) VALUES ('$itemno', '$client')";
-    //itemno user
-//
-//    if ($conn->query($sql) === TRUE) {
-//    // echo "Item Reserved";
-//    } else {
-//    echo "Error: " . $sql . "<br>" . $conn->error;
-//    }
 ?>
 
 <!DOCTYPE HTML>
@@ -27,13 +19,10 @@
             $itemno= $_GET['itemno'];
 
             mysqli_query($conn,"UPDATE Item set retStatus='loaned' WHERE itemno=$itemno");
-            //mysqli_query($conn,"UPDATE Reservation set client='$checkUser' WHERE itemno=$itemno");
 
              $sql = "INSERT INTO Reservation (itemno, status, requestdate, startdate, enddate, duration, client) VALUES ('$itemno', 'pending',NOW(), NOW(), NOW() + INTERVAL 1 DAY , '2', '$checkUser')";
         
             echo "$sql"
-            //itemno user
-
             
         ?>
     </body>
