@@ -36,10 +36,25 @@
 
                 <?php
                 require "../php/connectToDb.php";
+
+                $query = "%%";
+
+                if(isset($_GET['q'])){
+                    $query = '%' . $_GET['q'] . '%';
+                }
                 
-                $sql = "SELECT * FROM Item";
-                $results = mysqli_query($conn, $sql);
-                if($results-> num_rows > 0){
+                $sql = "SELECT Item.itemno,itemName,itemDescription,itemBrand,itemOwner,itemRentPrice,   
+                        itemOrigPrice,itemCondition,retStatus from Item left join Reservation   
+                        on(Item.itemno = Reservation.itemno) where ReservationID is null and retStatus = 'returned' 
+                        and (itemName LIKE ? or itemDescription LIKE ? or itemBrand LIKE ? or itemOwner LIKE ?)";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param('ssss',$query,$query,$query,$query);
+                $stmt->execute();
+
+
+                $results = $stmt->get_result();
+                if($results->num_rows > 0){
                     $x = 1;
                     while($row = mysqli_fetch_array($results)){
                         echo "<tr>
