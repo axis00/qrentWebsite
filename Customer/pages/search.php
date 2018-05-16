@@ -1,8 +1,8 @@
 <?php
         require "../php/session.php";
 ?>
-    <!DOCTYPE HTML>
-    <html>
+<!DOCTYPE HTML>
+<html>
 
     <head>
         <meta charset="utf-8">
@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="../styles/style.css">
         <link rel="stylesheet" href="../styles/bootstrap-4.0.0/dist/css/bootstrap.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous""></script>
         <title>Qrent</title>
     </head>
 
@@ -64,11 +65,7 @@
                             <td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> 
                             <td>" .$row["itemRentPrice"]. "</td>
                             <td>" .$row["itemCondition"]. "</td>
-                            <td>
-                            <form action='../php/reserve.php' method='POST' class = 'reserveForm'>
-                                <input type = 'hidden' name = 'resId' value = ".$row["itemno"].">
-                                <input type='submit' class='btn btn-secondary' name='item' value='Reserve'>
-                            </form>
+                            <td> <a href = './itemview.php?q=".$row['itemno']."'><button class='reserveBtn btn'>View</button></a>
                         </tr>";
                     }
                 }
@@ -78,4 +75,4 @@
         </div>
     </body>
 
-    </html>
+</html>

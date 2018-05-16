@@ -150,3 +150,10 @@ body {
 .container {
     margin-top: 20px;  
 }
+
+#itemViewHeader{
+    margin: auto;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}

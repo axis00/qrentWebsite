@@ -5,7 +5,6 @@ $(document).ready(function(){
 		$('#reserveFormCont').fadeOut();
 
 	});
-	$('#reserveForm').on('submit',reserveItem);
 
 });
 

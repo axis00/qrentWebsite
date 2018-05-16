@@ -1,7 +1,7 @@
 <?php
 
 	if(isset($_GET['img'])){
-		require "./pages/connectToDb.php";
+		require "./php/connectToDb.php";
 
 		$id = $_GET['img'];
 
