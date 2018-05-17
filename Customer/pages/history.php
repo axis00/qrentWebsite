@@ -23,23 +23,25 @@
 
             <table class="table table-striped">
                 <tr>
+                    <th>Reservation ID</th>
                     <th>Item No</th>
-                    <th>Status</th>
+                    <th>Item Name</th>
                     <th>Request Date</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Duration</th>
+                    <th>Status</th>
                 </tr>
                 <?php
             require "../php/connectToDb.php";
             
             echo "<center><h1>My Reservations</h1></center>";
-            $sql = "SELECT * FROM Reservation WHERE client='$checkUser';";
+            $sql = "SELECT Reservation.ReservationID, Reservation.itemno, Item.itemName, Reservation.requestdate, Reservation.startdate, Reservation.enddate, Reservation.duration, Reservation.status FROM qrent.Reservation inner join Item ON Reservation.itemno=Item.itemno WHERE client='$checkUser';";
             $results = mysqli_query($conn, $sql);
                 if($results-> num_rows > 0){
                 
                     while($row = mysqli_fetch_array($results)){
-                        echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["status"] . "</td><td>" . $row["requestdate"] . "</td><td>" . $row["startdate"] . "</td><td>" .$row["enddate"]. "</td> <td>" .$row["duration"]. "       </td>";
+                        echo "<tr><td scope='row'>". $row["ReservationID"] . "</td><td>". $row["itemno"] . "</td><td>" . $row["itemName"] . "</td><td>" . $row["requestdate"] . "</td><td>" .$row["startdate"]. "</td> <td>" .$row["enddate"]. "</td><td>" .$row["duration"]. "</td><td>" .$row["status"]. "</td>";
                     }
                 }
                     else{
