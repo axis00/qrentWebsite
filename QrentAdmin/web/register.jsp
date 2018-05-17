@@ -74,7 +74,7 @@
                 
                         ps.execute();
                             
-                        response.sendRedirect("superhomepage.jsp"); 
+                        response.sendRedirect("registration-confirmation.jsp"); 
                     } catch (SQLException ex){
                         out.println(ex);
                     }

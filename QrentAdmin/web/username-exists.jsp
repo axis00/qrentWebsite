@@ -40,11 +40,13 @@
                 
                 
                 if(val.next()){
-                    out.println("<font color=red>");
+                    out.println("<font color='red'>");
                     out.println("Username taken.");
                     out.println("</font>");
                 } else {
-                    out.print("OK");
+                    out.println("<font color='green'>");
+                    out.println("OK");
+                    out.println("</font>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);
