@@ -129,6 +129,7 @@
                 <div id="button-reg">
                     <input type="submit" class="btn btn-primary" value="Register">
                 </div>
+                <p>Already have an account? <a href="../index.php">Login here.</a></p>
             </form>
             </div>
     </body>
