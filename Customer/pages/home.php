@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <?php
+    require "../php/session.php";
     ?>
 
     <head>
@@ -13,8 +14,9 @@
     </head>
 
     <body style="background-color: #F7EBEC;">
+        <?php include 'nav.html'?>
         <div class="container mt-5">
-            <img src="../images/qrent-logo.png" width="200px" height="200px" style="margin:0 auto; float: 0;"/>
+            <img src="../images/qrent-logo.png" width="200px" height="200px" style="margin-top:100px; float: 0;"/>
             <form action = "./search.php" method="GET">
                 <div class="input-group mt-5">
                     <input type="text" class="form-control" placeholder="Search an item..." style="padding:15px;">

@@ -1,5 +1,4 @@
 <?php
-        
         require "../php/session.php";
 ?>
 
@@ -15,55 +14,40 @@
         <title>Qrent</title>
     </head>
 
-    <body id="body">
-        <div class="container">
-            <div class="row hidden-xs topper">
-                <div class="cols-xs-7 col-sm-7">
-                    <a href="home.php"><img  src="../images/qrent-logo.png" class="img-responsive" id="nav-logo" class="img-responsive"></a>
-                </div>
-            </div>
+    <body style="background-color: #F7EBEC;">
+        <div class="container" style="margin-top:5%;">
             <div class="nav-container">
                 <?php include 'nav.html';?>
-                
+
             </div>
-            
-             <table class="table table-borderless">
-        <tr>
-            <th>Item No</th>
-            <th>Status</th>
-            <th>Request Date</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Duration</th>
-        </tr>
-        
-        <?php
+
+            <table class="table table-striped">
+                <tr>
+                    <th>Item No</th>
+                    <th>Status</th>
+                    <th>Request Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Duration</th>
+                </tr>
+                <?php
             require "../php/connectToDb.php";
             
             echo "<center><h1>My Reservations</h1></center>";
             $sql = "SELECT * FROM Reservation WHERE client='$checkUser';";
             $results = mysqli_query($conn, $sql);
-            if($results-> num_rows > 0){
+                if($results-> num_rows > 0){
                 
-                while($row = mysqli_fetch_array($results)){
-                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["status"] . "</td><td>" . $row["requestdate"] . "</td><td>" . $row["startdate"] . "</td><td>" .$row["enddate"]. "</td> <td>" .$row["duration"]. "</td>";
+                    while($row = mysqli_fetch_array($results)){
+                        echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["status"] . "</td><td>" . $row["requestdate"] . "</td><td>" . $row["startdate"] . "</td><td>" .$row["enddate"]. "</td> <td>" .$row["duration"]. "       </td>";
+                    }
                 }
-            }
-            else{
-                echo "You have no reservations";
-            }
-                 
-//            echo "<center><h1>My Transactions</h1></center>";
-//            $sql = "SELECT * FROM Reservation WHERE client='$checkUser';";
-//            $results = mysqli_query($conn, $sql);
-//            if($results-> num_rows > 0){
-//                
-//                while($row = mysqli_fetch_array($results)){
-//                    echo "<tr><td scope='row'>". $row["itemno"] . "</td><td>". $row["status"] . "</td><td>" . $row["requestdate"] . "</td><td>" . $row["startdate"] . "</td><td>" .$row["enddate"]. "</td> <td>" .$row["duration"]. "</td>";
-//                }
-//            }    
-        ?>
-    </table>
+                    else{
+                        echo "You have no reservations";
+                    }
+                ?>
+            </table>
         </div>
-        </body>
-</html>
+    </body>
+
+    </html>
