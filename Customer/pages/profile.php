@@ -26,7 +26,7 @@
             require "../php/connectToDb.php";
             
             echo "<center><h1>My Profile</h1></center>";
-            $sql = "SELECT customers.username, users.firstname, users.lastname, customers.birthdate, customers.addressno, customers.street, customers.municipality, customers.province, customers.postalcode, customers.contactno, users.email, users.password  FROM qrent.customers inner join users ON customers.username = users.username WHERE users.username='$checkUser';;";
+            $sql = "SELECT customers.username, users.firstname, users.lastname, customers.birthdate, customers.addressno, customers.street, customers.municipality, customers.province, customers.postalcode, customers.contactno, users.email, users.password  FROM qrent.customers inner join users ON customers.username = users.username WHERE users.username='$checkUser';";
             $results = mysqli_query($conn, $sql);
             $data = mysqli_fetch_array($results);
             
@@ -59,7 +59,7 @@
             ?>
             </table>
             <div id="button-reg">
-                <center><input type="submit" id="button1" class="btn btn-primary" value="Edit Profile Information"></center>
+                <center><a href="../php/editProfile.php"><input type="submit" id="button1" class="btn btn-primary" value="Edit Profile Information"></a></center>
             </div>
         </div>
     </body>
