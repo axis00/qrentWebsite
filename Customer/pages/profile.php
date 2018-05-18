@@ -26,14 +26,10 @@
             require "../php/connectToDb.php";
             
             echo "<center><h1>My Profile</h1></center>";
-            $sql = "SELECT username, firstname, lastname, email, password FROM qrent.users WHERE username='$checkUser';";
+            $sql = "SELECT customers.username, users.firstname, users.lastname, customers.birthdate, customers.addressno, customers.street, customers.municipality, customers.province, customers.postalcode, customers.contactno, users.email, users.password  FROM qrent.customers inner join users ON customers.username = users.username WHERE users.username='$checkUser';;";
             $results = mysqli_query($conn, $sql);
             $data = mysqli_fetch_array($results);
-                $username = $data["username"];
-                $firstname = $data["firstname"];
-                $lastname = $data["lastname"];
-                $email = $data["email"];
-                
+            
                 echo '<tr>
                     <th scope="col">Username</td>
                     <td>'. $data["username"] .'</td>
@@ -46,6 +42,17 @@
                     <td>'. $data["lastname"] .'</td>
                     </tr>
                     <tr>
+                    <th scope="col">Birthdate</td>
+                    <td>'. $data["birthdate"] .'</td>
+                    </tr>
+                    <tr>
+                    <th scope="col">Address</td>
+                    <td>'. $data["addressno"] .' ' . $data["street"] . ', ' . $data["municipality"] . ', ' . $data["province"] . ', ' . $data["postalcode"] . '</td>
+                    </tr>
+                    <th scope="col">Contact Number</td>
+                    <td>'. $data["contactno"] .'</td>
+                    </tr>
+                    </tr>
                     <th scope="col">Email Address</td>
                     <td>'. $data["email"] .'</td>
                     </tr>';
