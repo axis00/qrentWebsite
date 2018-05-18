@@ -62,7 +62,8 @@
                             <td scope='row'>". $row["itemno"] . "</td>
                             <td>". $row["itemName"] . "</td>
                             <td>" . $row["itemDescription"] . "</td>
-                            <td>" . $row["itemBrand"] . "</td><td>" .$row["itemOwner"]. "</td> 
+                            <td>" . $row["itemBrand"] . "</td>
+                            <td>" .$row["itemOwner"]. "</td> 
                             <td>" .$row["itemRentPrice"]. "</td>
                             <td>" .$row["itemCondition"]. "</td>
                             <td> <a href = './itemview.php?q=".$row['itemno']."'><button class='reserveBtn btn'>View</button></a>

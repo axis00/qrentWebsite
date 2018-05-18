@@ -16,7 +16,7 @@
     <body style="background-color: #F7EBEC;">
         <?php include 'nav.html'?>
         <div class="container mt-5">
-            <img src="../images/qrent-logo.png" width="200px" height="200px" style="margin-top:100px; float: 0;"/>
+            <center><img src="../images/qrent-logo.png" width="200px" height="200px" style="margin-top:100px; float: 0;"/></center>
             <form action = "./search.php" method="GET">
                 <div class="input-group mt-5">
                     <input type="text" class="form-control" placeholder="Search an item..." style="padding:15px;">
