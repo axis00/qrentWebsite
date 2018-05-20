@@ -48,40 +48,43 @@
             $type = "Client";
             $addressType = "Home";
             $status = "pending";
+            
             $query = "SELECT email FROM users where email = '$email '";
             $results = mysqli_query($conn, $query);
             $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
             $count = mysqli_num_rows($results);
-        if($first == null || $last == null || $birthday == null || $email == null || $mobile == null || $username == null || $password == null || $verifyPassword == null || $addressNo == null || $street == null || $municipality == null || $province == null || $postalCode == null){
-                echo "<script> allFields() </script>";
-        }else{
-            $query2 = "SELECT username FROM users where username = '$username'";
-            $results2 = mysqli_query($conn, $query2);
-            $row2 = mysqli_fetch_array($results2, MYSQLI_ASSOC); 
-            $count2 = mysqli_num_rows($results2);
-            
-            if($count2 == 1){
-                echo "<script>usernameValidate()</script>";
-                }else{
-                    if($count == 1){
-                        echo "<script>emailValidate()</script>";
-                    }else{
-                        $password = password_hash($password, PASSWORD_DEFAULT); 
-                        $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
-                        $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
 
-                         $stmt2 = $conn->prepare("INSERT INTO customers(username, contactno, birthdate, addressno, street, municipality, province, postalcode) VALUES(?,?,?,?,?,?,?,?)");
-                        $stmt2->bind_param("ssssssss", $username, $mobile, $birthday, $addressNo, $street, $municipality, $province, $postalCode);
-                    if(!$stmt->execute()){
-                        echo $stmt->error;
-                        }elseif (!$stmt2->execute()){
-                            echo $stmt2->error;
-                        }else{
-                        $_SESSION['user'] = $username;
-                        echo "<script>successfull()</script>";
+            if($first == null || $last == null || $birthday == null || $email == null || $mobile == null || $username == null || $password == null || $verifyPassword == null || $addressNo == null || $street == null || $municipality == null || $province == null || $postalCode == null){
+                    echo "<script> allFields() </script>";
+            }else{
+                $query2 = "SELECT username FROM users where username = '$username'";
+                $results2 = mysqli_query($conn, $query2);
+                $row2 = mysqli_fetch_array($results2, MYSQLI_ASSOC); 
+                $count2 = mysqli_num_rows($results2);
+            
+                if($count2 == 1){
+                    echo "<script>usernameValidate()</script>";
+                    }else{
+                        if($count == 1){
+                            echo "<script>emailValidate()</script>";
+                            }else{
+                                $password = password_hash($password, PASSWORD_DEFAULT); 
+                                $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
+                                $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
+
+                                $stmt2 = $conn->prepare("INSERT INTO customers(username, contactno, birthdate, addressno, street, municipality, province, postalcode) VALUES(?,?,?,?,?,?,?,?)");
+                                $stmt2->bind_param("ssssssss", $username, $mobile, $birthday, $addressNo, $street, $municipality, $province, $postalCode);
+                    
+                                if(!$stmt->execute()){
+                                    echo $stmt->error;
+                                    }elseif (!$stmt2->execute()){
+                                        echo $stmt2->error;
+                                        }else{
+                                            $_SESSION['user'] = $username;
+                                            echo "<script>successfull()</script>";
+                                        }
+                                }
                         }
-                    }
-                }
                 }
         }
     ?>

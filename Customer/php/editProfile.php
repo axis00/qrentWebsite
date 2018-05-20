@@ -3,6 +3,14 @@
         alert("Successfully updated profile");
         window.location.href = "../pages/profile.php";
     }
+
+    function takenEmail() {
+        alert("E-mail already taken");
+    }
+
+    function takenNumber() {
+        alert("Mobile number already taken");
+    }
 </script>
 
 <?php
@@ -17,18 +25,35 @@
         $province = $_POST['province'];
         $postalCode = $_POST['postalCode'];
 
-        $updateUserQuery = $conn->prepare("UPDATE users SET email = '$email' WHERE username = '$session_username' ");
-         $updateCustomerQuery = $conn->prepare("UPDATE customers SET contactno = '$number', addressno = '$addressNo', street = '$street', municipality = '$municipality', province = '$province', postalcode = '$postalCode' WHERE username = '$session_username' ");
+        $validationQuery = "SELECT email FROM users WHERE email = '$email'";
+        $results = mysqli_query($conn, $validationQuery);
+        $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
+        $count = mysqli_num_rows($results);
+        $mail = $row['email'];
 
-         if(!$updateUserQuery->execute()){
-                echo $updateUserQuery->error();
-            } elseif (!$updateCustomerQuery->execute()) {
-                echo $updateCustomerQuery->error();
-            }{
+        $validationQuery2 = "SELECT contactno FROM customers WHERE contactno = '$number'";
+        $results = mysqli_query($conn, $validationQuery2);
+        $row = mysqli_fetch_array($results, MYSQLI_ASSOC); 
+        $count2 = mysqli_num_rows($results);
+        $mNumber = $row['contactno'];
+       
+        if ($count == 1 && $mail != $session_email) {
+            echo "<script>takenEmail()</script>";
+            }elseif ($count2 == 1 && $mNumber != $session_contact) {   
+                echo "<script>takenNumber()</script>";
+                }else{
+                    $updateUserQuery = $conn->prepare("UPDATE users SET email = '$email' WHERE username = '$session_username' ");
+                    $updateCustomerQuery = $conn->prepare("UPDATE customers SET contactno = '$number', addressno = '$addressNo', street = '$street', municipality = '$municipality', province = '$province', postalcode = '$postalCode' WHERE username = '$session_username' ");
+
+                    if(!$updateUserQuery->execute()){
+                        echo $updateUserQuery->error();
+                        } elseif (!$updateCustomerQuery->execute()) {
+                            echo $updateCustomerQuery->error();
+                        }
                 echo "<script>success()</script>";
              }
     }
-    ?>
+?>
 
 <!DOCTYPE HTML>
 <html>

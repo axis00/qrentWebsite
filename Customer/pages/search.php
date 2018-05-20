@@ -18,11 +18,13 @@
         <div class="nav-container">
             <?php include 'nav.html';?>
         </div>
+        
         <div class="container" style="margin-top:5%">
             <div class="d-inline">
                 <img class="d-inline" src="../images/qrent-logo.png" width="100px" height="100px" />
                 <h1 class="d-inline display-4 text-left">Homepage</h1>
             </div>
+            
             <table class="table table-striped">
                 <tr>
                     <th>Item No</th>
