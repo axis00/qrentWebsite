@@ -29,6 +29,7 @@
 <?php
         
         require "../php/connectToDb.php";
+        session_start();
         if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['addressNo']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];
             $last = $_POST['lastName'];
@@ -68,11 +69,17 @@
                         $password = password_hash($password, PASSWORD_DEFAULT); 
                         $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
                         $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
+
+                         $stmt2 = $conn->prepare("INSERT INTO customers(username, contactno, birthdate, addressno, street, municipality, province, postalcode) VALUES(?,?,?,?,?,?,?,?)");
+                        $stmt2->bind_param("ssssssss", $username, $mobile, $birthday, $addressNo, $street, $municipality, $province, $postalCode);
                     if(!$stmt->execute()){
                         echo $stmt->error;
-                        }
+                        }elseif (!$stmt2->execute()){
+                            echo $stmt2->error;
+                        }else{
                         $_SESSION['user'] = $username;
                         echo "<script>successfull()</script>";
+                        }
                     }
                 }
                 }

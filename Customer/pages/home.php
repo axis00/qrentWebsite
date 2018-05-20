@@ -13,8 +13,10 @@
         <title>Qrent</title>
     </head>
 
-    <body style="background-color: #F7EBEC;">
+    <body style="margin-top: 15vh; background-color: #F7EBEC;">
         <?php include 'nav.html'?>
+        <?php include 'alert.php'?>
+
         <div class="container mt-5">
             <center><img src="../images/qrent-logo.png" width="200px" height="200px" style="margin-top:100px; float: 0;"/></center>
             <form action = "./search.php" method="GET">
